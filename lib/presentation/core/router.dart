@@ -1,4 +1,5 @@
 import 'package:cash_manager/presentation/core/constants.dart';
+import 'package:cash_manager/presentation/intro/intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,7 +8,7 @@ final goRouter =
 GoRouter(navigatorKey: _rootNavigatorKey, initialLocation: PageRoutes.articlePage, routes: [
   GoRoute(
       path: PageRoutes.articlePage,
-      pageBuilder: (context, state) =>  const NoTransitionPage(
+      pageBuilder: (context, state) =>   NoTransitionPage(
         child: SizedBox(),
       ),
 
