@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class PageRoutes {
   static const articlePage = "/article";
+  static const introPage = "/intro";
 }
 
 class AppColorConstants {

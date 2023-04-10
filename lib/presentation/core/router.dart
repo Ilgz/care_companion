@@ -1,3 +1,4 @@
+import 'package:cash_manager/presentation/article/article_overview.dart';
 import 'package:cash_manager/presentation/core/constants.dart';
 import 'package:cash_manager/presentation/intro/intro_page.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +10,15 @@ GoRouter(navigatorKey: _rootNavigatorKey, initialLocation: PageRoutes.articlePag
   GoRoute(
       path: PageRoutes.articlePage,
       pageBuilder: (context, state) =>   NoTransitionPage(
-        child: IntroPage(),
+        child: ArticleOverview(),
       ),
-
   ),
-
-
+  GoRoute(
+    path: PageRoutes.introPage,
+    pageBuilder: (context, state) =>   NoTransitionPage(
+      child: IntroPage(),
+    ),
+  ),
 ]);
 
 void goToSignInPage(BuildContext context) => context.pushReplacement(

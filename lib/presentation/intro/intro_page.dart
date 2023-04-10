@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
-
   @override
   State<IntroPage> createState() => _IntroPageState();
 }
