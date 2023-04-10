@@ -16,7 +16,7 @@ class ArticleWatcherCubit extends Cubit<ArticleWatcherState> {
   ArticleWatcherCubit(this._articleRepository)
       : super(const ArticleWatcherState.initial());
 
-  void getTransactionData() async {
+  void getArticles() async {
     emit(const ArticleWatcherState.loadInProgress());
     final articles = await _articleRepository.getArticles();
     emit(articles.fold((f) => ArticleWatcherState.loadFailure(f),

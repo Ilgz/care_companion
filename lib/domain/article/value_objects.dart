@@ -7,7 +7,7 @@ class ArticleName extends ValueObject<String>{
   @override
   final Either<ValueFailure<String>, String>  value;
   factory ArticleName(String input){
-    return ArticleName._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 50)));
+    return ArticleName._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 150)));
   }
   const ArticleName._(this.value);
 }
@@ -15,7 +15,7 @@ class ArticleBody extends ValueObject<String>{
   @override
   final Either<ValueFailure<String>, String>  value;
   factory ArticleBody(String input){
-    return ArticleBody._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 1000)));
+    return ArticleBody._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 2000)));
   }
   const ArticleBody._(this.value);
 }

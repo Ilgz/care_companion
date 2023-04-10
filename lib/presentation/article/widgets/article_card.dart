@@ -1,27 +1,28 @@
+import 'package:cash_manager/domain/article/article.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ArticleCard extends StatelessWidget {
-  const ArticleCard({Key? key}) : super(key: key);
-
+  const ArticleCard({Key? key, required this.article}) : super(key: key);
+  final Article article;
   @override
   Widget build(BuildContext context) {
-    final DateTime now = DateTime.now();
-    final String formattedDate = DateFormat('d MMMM yyyy').format(now);
-    return  GestureDetector(
+    final String formattedDate = DateFormat('d MMMM yyyy').format(article.date);
+    return  InkWell(
       onTap: (){
         //TODO implement articled tapping functionality
       },
-      child: SizedBox(
+      child: Container(
         height: 60,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: Row(
           children: [
-            Container(
+            SizedBox(
               height: 60,
               width: 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.green),
+                       child: ClipRRect(borderRadius:BorderRadius.circular(8),child: Image.asset("assets/images/${article.image}.png",width: double.infinity,height: double.infinity,fit: BoxFit.cover,)),
             ),
             SizedBox(
               width: 12,
@@ -45,9 +46,10 @@ class ArticleCard extends StatelessWidget {
                       ],
                     ),
                     Expanded(
-                      child: Center(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
                         child: Text(
-                          "Use of topical fluorides for caries prevention in primary teeth.",
+                          article.name.getOrCrash(),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
