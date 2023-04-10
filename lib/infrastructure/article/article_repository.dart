@@ -2,23 +2,28 @@ import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/domain/article/article_failure.dart';
 import 'package:cash_manager/domain/article/i_article_repository.dart';
 import 'package:cash_manager/domain/article/value_objects.dart';
-import 'package:cash_manager/infrastructure/article/article_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IArticleRepository)
 class ArticleRepository implements IArticleRepository {
-  final Box<ArticleDto> _articleBox;
-
-  ArticleRepository(@Named("article") this._articleBox);
+  final Box<String> _favArticleBox;
+  ArticleRepository(@Named("favArticleUidBox") this._favArticleBox);
 
   @override
   Future<Either<ArticleFailure, Unit>> createFavoriteArticles(
       Article article) async {
     try {
-      await _articleBox.add(ArticleDto.fromDomain(article));
-      return right(unit);
+      final favoritesEither = await getFavoriteArticles();
+      return favoritesEither.fold((failure) {
+        return left(failure);
+      }, (favorites) async {
+        if (!favorites.contains(article.uid)) {
+          await _favArticleBox.add(article.uid);
+        }
+        return right(unit);
+      });
     } on HiveError catch (e) {
       return left(const ArticleFailure.unexpected());
     }
@@ -28,15 +33,19 @@ class ArticleRepository implements IArticleRepository {
   Future<Either<ArticleFailure, Unit>> deleteFavoriteArticles(
       Article article) async {
     try {
-      final incomeList = _articleBox.values.toList();
-      final index =
-          incomeList.indexWhere((e) => e == ArticleDto.fromDomain(article));
-      if (index == -1) {
-        return left(const ArticleFailure.unexpected());
-      }
-      await _articleBox.deleteAt(index);
-      return right(unit);
-    } on HiveError {
+      final favoritesEither = await getFavoriteArticles();
+      return favoritesEither.fold((failure) {
+        return left(failure);
+      }, (favorites) async {
+        int index =
+        favorites.indexWhere((e) => e == article.uid);
+        if (index == -1) {
+          return left(const ArticleFailure.unexpected());
+        }
+        await _favArticleBox.deleteAt(index);
+        return right(unit);
+      });
+    } on HiveError catch (e) {
       return left(const ArticleFailure.unexpected());
     }
   }
@@ -45,6 +54,7 @@ class ArticleRepository implements IArticleRepository {
   Future<Either<ArticleFailure, List<Article>>> getArticles() async {
     final List<Article> articles = [
       Article(
+        uid:  "uid_1",
           name: ArticleName("10 Tips for Maintaining Your Child's Health"),
           body: ArticleBody(
               "10 Tips for Maintaining Your Child's Health\n\nAs a parent, your child's health is your top priority. However, with so much conflicting information out there, it can be hard to know what's best for your little one. Here are 10 tips for maintaining your child's health:\n\n1. Breastfeed if possible. Breast milk provides all the necessary nutrients for your baby's development and strengthens their immune system.\n\n2. Ensure proper nutrition. As your child grows, it's important to provide a balanced diet that includes plenty of fruits, vegetables, lean proteins, and whole grains.\n\n3. Encourage physical activity. Regular exercise can help your child maintain a healthy weight, improve their mood, and develop strong bones and muscles.\n\n4. Prioritize sleep. Children need plenty of sleep to support their physical and mental development, so make sure your child gets enough rest each night.\n\n5. Promote good hygiene. Teach your child to wash their hands regularly, cover their mouth when they cough or sneeze, and avoid sharing personal items like toothbrushes.\n\n6. Keep up with vaccinations. Vaccinations are a crucial way to protect your child from dangerous diseases, so make sure your child receives all the recommended immunizations.\n\n7. Schedule regular checkups. Regular visits to the pediatrician can help catch any health problems early on and ensure your child stays on track with their physical and mental development.\n\n8. Limit screen time. Too much screen time can have negative effects on your child's health, so set limits on how much time your child spends in front of screens each day.\n\n9. Encourage socialization. Socializing with peers can help your child develop important social and emotional skills, so make sure your child has opportunities to interact with other children.\n\n10. Be a good role model. Children often model their behavior after their parents, so make sure you're setting a good example by prioritizing your own health and wellness.\n\nBy following these tips, you can help ensure that your child stays healthy and happy as they grow and develop. Remember, a healthy child is a happy child!"),
@@ -55,6 +65,7 @@ class ArticleRepository implements IArticleRepository {
             3,
           )),
       Article(
+          uid:  "uid_2",
           name: ArticleName(
               "Understanding Anxiety in Children: Signs, Symptoms, and Treatment"),
           body: ArticleBody(
@@ -66,6 +77,7 @@ class ArticleRepository implements IArticleRepository {
             3,
           )),
       Article(
+          uid:  "uid_3",
           name: ArticleName(
               "Effective Strategies for Raising Happy, Healthy child"),
           body: ArticleBody(
@@ -77,6 +89,8 @@ class ArticleRepository implements IArticleRepository {
             2,
           )),
       Article(
+          uid:  "uid_4",
+
           name: ArticleName(
               "Positive Discipline: Effective Strategies for Raising Well-Behaved child"),
           body: ArticleBody(
@@ -88,6 +102,7 @@ class ArticleRepository implements IArticleRepository {
             22,
           )),
       Article(
+          uid:  "uid_5",
           name: ArticleName(
               "Fostering Creativity in Children: Tips and Strategies"),
           body: ArticleBody(
@@ -99,6 +114,7 @@ class ArticleRepository implements IArticleRepository {
             15,
           )),
       Article(
+          uid:  "uid_6",
           name: ArticleName(
               "Baby Care 101: Tips for Taking Care of Your Newborn"),
           body: ArticleBody(
@@ -110,6 +126,7 @@ class ArticleRepository implements IArticleRepository {
             8,
           )),
       Article(
+          uid:  "uid_7",
           name: ArticleName(
               "The Benefits of Mindful Parenting: How Being Present Can Help You and Your Child"),
           body: ArticleBody(
@@ -121,6 +138,7 @@ class ArticleRepository implements IArticleRepository {
             1,
           )),
       Article(
+          uid:  "uid_8",
           name: ArticleName(
               "Navigating Screen Time for Kids: Tips and Guidelines for Healthy Technology Use"),
           body: ArticleBody(
@@ -132,6 +150,7 @@ class ArticleRepository implements IArticleRepository {
             24,
           )),
       Article(
+          uid:  "uid_9",
           name: ArticleName(
               "Building Resilience in Children: Strategies and Tips for Raising Strong and Confident Kids"),
           body: ArticleBody(
@@ -143,6 +162,7 @@ class ArticleRepository implements IArticleRepository {
             19,
           )),
       Article(
+          uid:  "uid_10",
           name: ArticleName(
               "The Importance of Sleep for Child Development: Tips and Strategies for Establishing Healthy Sleep Habits"),
           body: ArticleBody(
@@ -159,9 +179,9 @@ class ArticleRepository implements IArticleRepository {
   }
 
   @override
-  Future<Either<ArticleFailure, List<Article>>> getFavoriteArticles() async {
+  Future<Either<ArticleFailure, List<String>>> getFavoriteArticles() async {
     final articles =
-        _articleBox.values.toList().map((e) => e.toDomain()).toList();
+        _favArticleBox.values.toList();
     return right(articles);
   }
 }

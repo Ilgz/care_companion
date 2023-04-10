@@ -16,9 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Article {
+  String get uid => throw _privateConstructorUsedError;
   ArticleName get name => throw _privateConstructorUsedError;
   ArticleBody get body => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  bool get isFav => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +32,13 @@ abstract class $ArticleCopyWith<$Res> {
   factory $ArticleCopyWith(Article value, $Res Function(Article) then) =
       _$ArticleCopyWithImpl<$Res, Article>;
   @useResult
-  $Res call({ArticleName name, ArticleBody body, String image, DateTime date});
+  $Res call(
+      {String uid,
+      ArticleName name,
+      ArticleBody body,
+      String image,
+      bool isFav,
+      DateTime date});
 }
 
 /// @nodoc
@@ -46,12 +54,18 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uid = null,
     Object? name = null,
     Object? body = null,
     Object? image = null,
+    Object? isFav = null,
     Object? date = null,
   }) {
     return _then(_value.copyWith(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -64,6 +78,10 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      isFav: null == isFav
+          ? _value.isFav
+          : isFav // ignore: cast_nullable_to_non_nullable
+              as bool,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -79,7 +97,13 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       __$$_ArticleCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ArticleName name, ArticleBody body, String image, DateTime date});
+  $Res call(
+      {String uid,
+      ArticleName name,
+      ArticleBody body,
+      String image,
+      bool isFav,
+      DateTime date});
 }
 
 /// @nodoc
@@ -92,12 +116,18 @@ class __$$_ArticleCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? uid = null,
     Object? name = null,
     Object? body = null,
     Object? image = null,
+    Object? isFav = null,
     Object? date = null,
   }) {
     return _then(_$_Article(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -110,6 +140,10 @@ class __$$_ArticleCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      isFav: null == isFav
+          ? _value.isFav
+          : isFav // ignore: cast_nullable_to_non_nullable
+              as bool,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -122,12 +156,16 @@ class __$$_ArticleCopyWithImpl<$Res>
 
 class _$_Article extends _Article {
   _$_Article(
-      {required this.name,
+      {required this.uid,
+      required this.name,
       required this.body,
       required this.image,
+      this.isFav = false,
       required this.date})
       : super._();
 
+  @override
+  final String uid;
   @override
   final ArticleName name;
   @override
@@ -135,11 +173,14 @@ class _$_Article extends _Article {
   @override
   final String image;
   @override
+  @JsonKey()
+  final bool isFav;
+  @override
   final DateTime date;
 
   @override
   String toString() {
-    return 'Article(name: $name, body: $body, image: $image, date: $date)';
+    return 'Article(uid: $uid, name: $name, body: $body, image: $image, isFav: $isFav, date: $date)';
   }
 
   @override
@@ -147,14 +188,17 @@ class _$_Article extends _Article {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Article &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.isFav, isFav) || other.isFav == isFav) &&
             (identical(other.date, date) || other.date == date));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, body, image, date);
+  int get hashCode =>
+      Object.hash(runtimeType, uid, name, body, image, isFav, date);
 
   @JsonKey(ignore: true)
   @override
@@ -165,18 +209,24 @@ class _$_Article extends _Article {
 
 abstract class _Article extends Article {
   factory _Article(
-      {required final ArticleName name,
+      {required final String uid,
+      required final ArticleName name,
       required final ArticleBody body,
       required final String image,
+      final bool isFav,
       required final DateTime date}) = _$_Article;
   _Article._() : super._();
 
+  @override
+  String get uid;
   @override
   ArticleName get name;
   @override
   ArticleBody get body;
   @override
   String get image;
+  @override
+  bool get isFav;
   @override
   DateTime get date;
   @override

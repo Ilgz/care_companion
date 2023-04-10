@@ -12,11 +12,9 @@ part 'article_watcher_state.dart';
 @injectable
 class ArticleWatcherCubit extends Cubit<ArticleWatcherState> {
   final IArticleRepository _articleRepository;
-
   ArticleWatcherCubit(this._articleRepository)
       : super(const ArticleWatcherState.initial());
-
-  void getArticles() async {
+  Future<void> getArticles() async {
     emit(const ArticleWatcherState.loadInProgress());
     final articles = await _articleRepository.getArticles();
     emit(articles.fold((f) => ArticleWatcherState.loadFailure(f),

@@ -10,7 +10,9 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ArticleWatcherCubit>()..getArticles(),
+      create: (context) => getIt<ArticleWatcherCubit>()
+       ..getArticles()
+      ,
       child: MaterialApp.router(
         routerConfig: goRouter,
         title: "Care Companion",

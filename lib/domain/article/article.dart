@@ -8,11 +8,12 @@ part 'article.freezed.dart';
 @freezed
 abstract class Article implements _$Article {
   Article._();
-
   factory Article({
+    required String uid,
     required ArticleName name,
     required ArticleBody body,
     required String image,
+    @Default(false)bool isFav,
     required DateTime date,
   }) = _Article;
 Option<ValueFailure<dynamic>> get failureOption {

@@ -1,4 +1,3 @@
-import 'package:cash_manager/infrastructure/article/article_dto.dart';
 import 'package:cash_manager/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +6,6 @@ import 'package:injectable/injectable.dart';
 import 'presentation/core/widgets/app_widget.dart';
 void main() async{
   await Hive.initFlutter();
-  Hive.registerAdapter(ArticleDtoAdapter());
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection(Environment.prod);
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
