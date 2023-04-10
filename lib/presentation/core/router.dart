@@ -9,7 +9,7 @@ GoRouter(navigatorKey: _rootNavigatorKey, initialLocation: PageRoutes.articlePag
   GoRoute(
       path: PageRoutes.articlePage,
       pageBuilder: (context, state) =>   NoTransitionPage(
-        child: SizedBox(),
+        child: IntroPage(),
       ),
 
   ),
