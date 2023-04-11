@@ -39,9 +39,9 @@ class ArticleCard extends StatelessWidget {
                               fontSize: 12, color: Colors.grey[600]),
                         ),
                         Spacer(),
-                        Icon(Icons.bookmark,
+                        Icon(article.isFav?Icons.bookmark:Icons.bookmark_border_outlined,
                           size: 18,
-                          color: Color(0xfffd894f),
+                          color:article.isFav?Color(0xfffd894f):Colors.grey,
                         )
                       ],
                     ),

@@ -15,7 +15,7 @@ class ArticleBody extends ValueObject<String>{
   @override
   final Either<ValueFailure<String>, String>  value;
   factory ArticleBody(String input){
-    return ArticleBody._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 2000)));
+    return ArticleBody._(validateStringNotEmpty(input).andThen(validateMaxStringLength(input, 3000)));
   }
   const ArticleBody._(this.value);
 }
