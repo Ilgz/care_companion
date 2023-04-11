@@ -5,7 +5,6 @@ import 'package:cash_manager/presentation/core/widgets/critical_failure_card.dar
 import 'package:cash_manager/presentation/core/widgets/custom_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 class ArticleOverviewPage extends StatelessWidget {
   const ArticleOverviewPage({Key? key}) : super(key: key);
 

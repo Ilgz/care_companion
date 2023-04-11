@@ -11,14 +11,16 @@ part 'fav_article_actor_cubit.freezed.dart';
 class FavArticleActorCubit extends Cubit<FavArticleActorState> {
   final IArticleRepository _articleRepository;
   FavArticleActorCubit(this._articleRepository) : super(const FavArticleActorState.initial());
-  deleteArticle(Article article)async{
+  deleteFavArticle(Article article)async{
+    emit(const FavArticleActorState.loadInProgress());
     final failureOrSuccess =
     await _articleRepository.deleteFavoriteArticles(article);
       emit(failureOrSuccess.fold(
               (f) => FavArticleActorState.deleteFavArticleFailure(f),
-              (_) => const FavArticleActorState.createFavArticleSuccess()));
+              (_) => const FavArticleActorState.deleteFavArticleSuccess()));
   }
-  createArticle(Article article)async{
+  createFavArticle(Article article)async{
+    emit(const FavArticleActorState.loadInProgress());
     final failureOrSuccess =
     await _articleRepository.createFavoriteArticles(article);
     emit(failureOrSuccess.fold(

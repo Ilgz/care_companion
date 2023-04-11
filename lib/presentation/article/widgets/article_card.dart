@@ -1,5 +1,7 @@
+import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class ArticleCard extends StatelessWidget {
@@ -39,9 +41,18 @@ class ArticleCard extends StatelessWidget {
                               fontSize: 12, color: Colors.grey[600]),
                         ),
                         Spacer(),
-                        Icon(article.isFav?Icons.bookmark:Icons.bookmark_border_outlined,
-                          size: 18,
-                          color:article.isFav?Color(0xfffd894f):Colors.grey,
+                        GestureDetector(
+                          onTap: (){
+                            if(article.isFav){
+                              context.read<FavArticleActorCubit>().deleteFavArticle(article);
+                            }else{
+                              context.read<FavArticleActorCubit>().createFavArticle(article);
+                            }
+                          },
+                          child: Icon(article.isFav?Icons.bookmark:Icons.bookmark_border_outlined,
+                            size: 18,
+                            color:article.isFav?Color(0xfffd894f):Colors.grey,
+                          ),
                         )
                       ],
                     ),

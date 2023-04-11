@@ -33,7 +33,7 @@ class ArticleFavoriteStatusUpdaterCubit extends Cubit<ArticleFavoriteStatusUpdat
       if(state.favIdList.contains(articles[i].uid)){
         updatedArticles.add(articles[i].copyWith(isFav:true));
       }else{
-        updatedArticles.add(articles[i]);
+        updatedArticles.add(articles[i].copyWith(isFav:false));
       }
     }
     return updatedArticles;

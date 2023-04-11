@@ -19,6 +19,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -30,6 +31,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -39,6 +41,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -49,6 +52,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -62,6 +66,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -71,6 +76,7 @@ mixin _$FavArticleActorState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -137,6 +143,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -151,6 +158,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -163,6 +171,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -179,6 +188,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -195,6 +205,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -207,6 +218,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -222,6 +234,138 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements FavArticleActorState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_LoadInProgressCopyWith<$Res> {
+  factory _$$_LoadInProgressCopyWith(
+          _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
+      __$$_LoadInProgressCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadInProgressCopyWithImpl<$Res>
+    extends _$FavArticleActorStateCopyWithImpl<$Res, _$_LoadInProgress>
+    implements _$$_LoadInProgressCopyWith<$Res> {
+  __$$_LoadInProgressCopyWithImpl(
+      _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LoadInProgress implements _LoadInProgress {
+  const _$_LoadInProgress();
+
+  @override
+  String toString() {
+    return 'FavArticleActorState.loadInProgress()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LoadInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function() deleteFavArticleSuccess,
+    required TResult Function(ArticleFailure failureException)
+        deleteFavArticleFailure,
+    required TResult Function() createFavArticleSuccess,
+    required TResult Function(ArticleFailure failureException)
+        createFavArticleFailure,
+  }) {
+    return loadInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function()? deleteFavArticleSuccess,
+    TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
+    TResult? Function()? createFavArticleSuccess,
+    TResult? Function(ArticleFailure failureException)? createFavArticleFailure,
+  }) {
+    return loadInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function()? deleteFavArticleSuccess,
+    TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
+    TResult Function()? createFavArticleSuccess,
+    TResult Function(ArticleFailure failureException)? createFavArticleFailure,
+    required TResult orElse(),
+  }) {
+    if (loadInProgress != null) {
+      return loadInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_DeleteFavArticleSuccess value)
+        deleteFavArticleSuccess,
+    required TResult Function(_DeleteFavArticleFailure value)
+        deleteFavArticleFailure,
+    required TResult Function(_CreateFavArticleSuccess value)
+        createFavArticleSuccess,
+    required TResult Function(_CreateFavArticleFailure value)
+        createFavArticleFailure,
+  }) {
+    return loadInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
+    TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
+    TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
+    TResult? Function(_CreateFavArticleFailure value)? createFavArticleFailure,
+  }) {
+    return loadInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
+    TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
+    TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
+    TResult Function(_CreateFavArticleFailure value)? createFavArticleFailure,
+    required TResult orElse(),
+  }) {
+    if (loadInProgress != null) {
+      return loadInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadInProgress implements FavArticleActorState {
+  const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
 /// @nodoc
@@ -264,6 +408,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -278,6 +423,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -290,6 +436,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -306,6 +453,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -322,6 +470,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -334,6 +483,7 @@ class _$_DeleteFavArticleSuccess implements _DeleteFavArticleSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -429,6 +579,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -443,6 +594,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -455,6 +607,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -471,6 +624,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -487,6 +641,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -499,6 +654,7 @@ class _$_DeleteFavArticleFailure implements _DeleteFavArticleFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -562,6 +718,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -576,6 +733,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -588,6 +746,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -604,6 +763,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -620,6 +780,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -632,6 +793,7 @@ class _$_CreateFavArticleSuccess implements _CreateFavArticleSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -727,6 +889,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() deleteFavArticleSuccess,
     required TResult Function(ArticleFailure failureException)
         deleteFavArticleFailure,
@@ -741,6 +904,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? deleteFavArticleSuccess,
     TResult? Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult? Function()? createFavArticleSuccess,
@@ -753,6 +917,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? deleteFavArticleSuccess,
     TResult Function(ArticleFailure failureException)? deleteFavArticleFailure,
     TResult Function()? createFavArticleSuccess,
@@ -769,6 +934,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_DeleteFavArticleSuccess value)
         deleteFavArticleSuccess,
     required TResult Function(_DeleteFavArticleFailure value)
@@ -785,6 +951,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult? Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult? Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
@@ -797,6 +964,7 @@ class _$_CreateFavArticleFailure implements _CreateFavArticleFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_DeleteFavArticleSuccess value)? deleteFavArticleSuccess,
     TResult Function(_DeleteFavArticleFailure value)? deleteFavArticleFailure,
     TResult Function(_CreateFavArticleSuccess value)? createFavArticleSuccess,
