@@ -6,6 +6,8 @@ abstract class IArticleRepository{
   Future<Either<ArticleFailure,List<String>>> getFavoriteArticles();
   Future<Either<ArticleFailure, Unit>>createFavoriteArticles(Article article);
   Future<Either<ArticleFailure, Unit>>deleteFavoriteArticles(Article article);
+  //Search
+  Future<Either<ArticleFailure, List<Article>>> searchArticles(String searchTerm,List<Article> articles);
   Future<Either<ArticleFailure, List<String>>> getSearchHistory();
   Future<Either<ArticleFailure, Unit>> addSearchHistory(String searchTerm);
   Future<Either<ArticleFailure, Unit>> deleteSearchHistory(String searchTerm);
