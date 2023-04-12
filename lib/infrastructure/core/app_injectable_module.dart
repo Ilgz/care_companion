@@ -11,4 +11,8 @@ abstract class AppInjectableProdModule {
   @Named("favArticleUidBox")
   Future<Box<String>> get favArticleBox =>
       Hive.openBox("favArticleUid");
+  @preResolve
+  @Named("searchHistoryBox")
+  Future<Box<String>> get searchHistoryBox =>
+      Hive.openBox("searchHistory");
 }

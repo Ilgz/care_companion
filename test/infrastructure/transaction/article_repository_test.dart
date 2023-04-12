@@ -11,12 +11,14 @@ import '../../fixtures/faker.dart';
 
 void main() async {
   late Box<String> favArticleBox;
+  late Box<String> searchHistoryBox;
   late ArticleRepository articleRepository;
   late Article article;
   setUp(() async {
     await setUpTestHive();
-    favArticleBox = await Hive.openBox("articles");
-    articleRepository = ArticleRepository(favArticleBox);
+    favArticleBox = await Hive.openBox("favArticleUid");
+    searchHistoryBox = await Hive.openBox("searchHistory");
+    articleRepository = ArticleRepository(favArticleBox,searchHistoryBox);
     article=  Article(uid: getRandomName(), name: ArticleName(getRandomName()),body: ArticleBody(getRandomName()),date: DateTime.now(), image: getRandomName());
   });
   tearDown(() async {

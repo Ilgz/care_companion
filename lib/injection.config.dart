@@ -44,9 +44,16 @@ extension GetItInjectableX on _i1.GetIt {
       instanceName: 'favArticleUidBox',
       preResolve: true,
     );
+    await gh.factoryAsync<_i3.Box<String>>(
+      () => appInjectableProdModule.searchHistoryBox,
+      instanceName: 'searchHistoryBox',
+      preResolve: true,
+    );
     gh.lazySingleton<_i4.Client>(() => appInjectableProdModule.httpClient);
     gh.lazySingleton<_i5.IArticleRepository>(() => _i6.ArticleRepository(
-        gh<_i3.Box<String>>(instanceName: 'favArticleUidBox')));
+          gh<_i3.Box<String>>(instanceName: 'favArticleUidBox'),
+          gh<_i3.Box<String>>(instanceName: 'searchHistoryBox'),
+        ));
     gh.factory<_i7.ArticleWatcherCubit>(
         () => _i7.ArticleWatcherCubit(gh<_i5.IArticleRepository>()));
     gh.factory<_i8.FavArticleActorCubit>(
