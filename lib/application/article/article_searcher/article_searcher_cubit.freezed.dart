@@ -20,7 +20,7 @@ mixin _$ArticleSearcherState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) =>
@@ -29,7 +29,7 @@ mixin _$ArticleSearcherState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) =>
@@ -38,7 +38,7 @@ mixin _$ArticleSearcherState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),
@@ -132,7 +132,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) {
@@ -144,7 +144,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) {
@@ -156,7 +156,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),
@@ -251,7 +251,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) {
@@ -263,7 +263,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) {
@@ -275,7 +275,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),
@@ -336,7 +336,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
   factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Article> articles});
+  $Res call({List<Article> articles, String searchTerm});
 }
 
 /// @nodoc
@@ -350,12 +350,17 @@ class __$$_LoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articles = null,
+    Object? searchTerm = null,
   }) {
     return _then(_$_Loaded(
       null == articles
           ? _value._articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<Article>,
+      null == searchTerm
+          ? _value.searchTerm
+          : searchTerm // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -363,7 +368,8 @@ class __$$_LoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(final List<Article> articles) : _articles = articles;
+  const _$_Loaded(final List<Article> articles, this.searchTerm)
+      : _articles = articles;
 
   final List<Article> _articles;
   @override
@@ -374,8 +380,11 @@ class _$_Loaded implements _Loaded {
   }
 
   @override
+  final String searchTerm;
+
+  @override
   String toString() {
-    return 'ArticleSearcherState.loaded(articles: $articles)';
+    return 'ArticleSearcherState.loaded(articles: $articles, searchTerm: $searchTerm)';
   }
 
   @override
@@ -383,12 +392,14 @@ class _$_Loaded implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other._articles, _articles));
+            const DeepCollectionEquality().equals(other._articles, _articles) &&
+            (identical(other.searchTerm, searchTerm) ||
+                other.searchTerm == searchTerm));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_articles));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_articles), searchTerm);
 
   @JsonKey(ignore: true)
   @override
@@ -401,11 +412,11 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) {
-    return loaded(articles);
+    return loaded(articles, searchTerm);
   }
 
   @override
@@ -413,11 +424,11 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) {
-    return loaded?.call(articles);
+    return loaded?.call(articles, searchTerm);
   }
 
   @override
@@ -425,13 +436,13 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(articles);
+      return loaded(articles, searchTerm);
     }
     return orElse();
   }
@@ -478,9 +489,11 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements ArticleSearcherState {
-  const factory _Loaded(final List<Article> articles) = _$_Loaded;
+  const factory _Loaded(final List<Article> articles, final String searchTerm) =
+      _$_Loaded;
 
   List<Article> get articles;
+  String get searchTerm;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -561,7 +574,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) {
@@ -573,7 +586,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) {
@@ -585,7 +598,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),
@@ -721,7 +734,7 @@ class _$_SearchHistoryLoaded implements _SearchHistoryLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Article> articles) loaded,
+    required TResult Function(List<Article> articles, String searchTerm) loaded,
     required TResult Function(ArticleFailure failure) failure,
     required TResult Function(List<String> searchHistory) searchHistoryLoaded,
   }) {
@@ -733,7 +746,7 @@ class _$_SearchHistoryLoaded implements _SearchHistoryLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Article> articles)? loaded,
+    TResult? Function(List<Article> articles, String searchTerm)? loaded,
     TResult? Function(ArticleFailure failure)? failure,
     TResult? Function(List<String> searchHistory)? searchHistoryLoaded,
   }) {
@@ -745,7 +758,7 @@ class _$_SearchHistoryLoaded implements _SearchHistoryLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Article> articles)? loaded,
+    TResult Function(List<Article> articles, String searchTerm)? loaded,
     TResult Function(ArticleFailure failure)? failure,
     TResult Function(List<String> searchHistory)? searchHistoryLoaded,
     required TResult orElse(),

@@ -190,7 +190,7 @@ class ArticleRepository implements IArticleRepository {
   @override
   Future<Either<ArticleFailure, List<String>>> getSearchHistory() async {
     try {
-      final searchHistory = _searchHistoryBox.values.toList();
+      final searchHistory = _searchHistoryBox.values.toList().reversed.toList();
       return right(searchHistory);
     } on HiveError catch (_) {
       return left(const ArticleFailure.unexpected());

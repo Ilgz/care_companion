@@ -1,4 +1,5 @@
 import 'package:cash_manager/application/article/article_fav_status_updater/article_fav_status_updater_cubit.dart';
+import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart';
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
@@ -26,6 +27,9 @@ class AppWidget extends StatelessWidget {
             lazy: false),
         BlocProvider(
           create: (context) => getIt<FavArticleActorCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<ArticleSearcherCubit>(),
         ),
       ],
       child: Builder(builder: (context) {

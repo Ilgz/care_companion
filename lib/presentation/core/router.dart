@@ -13,12 +13,7 @@ final goRouter = GoRouter(
     initialLocation: PageRoutes.articleOverviewPage,
     routes: [
       GoRoute(
-          redirect: (context, state) {
-            if (state.extra == null) {
-              return PageRoutes.articleOverviewPage;
-            }
-            return null;
-          },
+
         path: PageRoutes.articleOverviewPage,
         pageBuilder: (context, state) => NoTransitionPage(
           child: ArticleOverviewPage(),
@@ -31,6 +26,12 @@ final goRouter = GoRouter(
               ),
             ),
             GoRoute(
+              redirect: (context, state) {
+                if (state.extra == null) {
+                  return PageRoutes.articleOverviewPage;
+                }
+                return null;
+              },
               path: PageRoutes.articlePage,
               pageBuilder: (context, state) => NoTransitionPage(
                 child: ArticlePage( initialArticle: state.extra as Article,),
