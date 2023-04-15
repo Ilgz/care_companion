@@ -1,9 +1,10 @@
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/presentation/article/article_overview_page.dart';
 import 'package:cash_manager/presentation/article/article_page.dart';
+import 'package:cash_manager/presentation/article/article_saved/article_saved_page.dart';
+import 'package:cash_manager/presentation/article/article_search/article_search_page.dart';
 import 'package:cash_manager/presentation/core/constants.dart';
 import 'package:cash_manager/presentation/intro/intro_page.dart';
-import 'package:cash_manager/presentation/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +23,13 @@ final goRouter = GoRouter(
             GoRoute(
               path: PageRoutes.searchPage,
               pageBuilder: (context, state) => NoTransitionPage(
-                child: SearchPage(),
+                child: ArticleSearchPage(),
+              ),
+            ),
+            GoRoute(
+              path: PageRoutes.savedPage,
+              pageBuilder: (context, state) => NoTransitionPage(
+                child: ArticleSavedPage(),
               ),
             ),
             GoRoute(
@@ -56,3 +63,6 @@ void goToArticlePage(BuildContext context,Article article) => context.push(
 void goToSearchPage(BuildContext context) => context.push(
       "${PageRoutes.articleOverviewPage}/${PageRoutes.searchPage}",
     );
+void goToSavedPage(BuildContext context) => context.push(
+  "${PageRoutes.articleOverviewPage}/${PageRoutes.savedPage}",
+);

@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 part 'fav_article_actor_state.dart';
 part 'fav_article_actor_cubit.freezed.dart';
-@injectable
+@singleton
 class FavArticleActorCubit extends Cubit<FavArticleActorState> {
   final IArticleRepository _articleRepository;
   FavArticleActorCubit(this._articleRepository) : super(const FavArticleActorState.initial());

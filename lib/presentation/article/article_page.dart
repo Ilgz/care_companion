@@ -1,4 +1,4 @@
-import 'package:cash_manager/application/article/article_fav_status_updater/article_fav_status_updater_cubit.dart';
+import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/presentation/article/widgets/custom_scaffold.dart';
@@ -14,10 +14,10 @@ class ArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       isScrolling: true,
-      body: BlocBuilder<ArticleFavoriteStatusUpdaterCubit,
-          ArticleFavoriteStatusUpdaterState>(
+      body: BlocBuilder<ArticleWatcherCubit,
+          ArticleWatcherState>(
         builder: (context, state) {
-          final article = state.articles.firstWhere(
+          final article = (state.maybeMap(loadSuccess: (state)=>state.articles,orElse: ()=>[])).firstWhere(
               (article) => article.uid == initialArticle.uid,
               orElse: () => Article.empty());
           return Column(

@@ -1,5 +1,5 @@
-import 'package:cash_manager/application/article/article_fav_status_updater/article_fav_status_updater_cubit.dart';
 import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart';
+import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/presentation/article/widgets/article_card.dart';
 import 'package:cash_manager/presentation/article/widgets/custom_scaffold.dart';
@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({Key? key}) : super(key: key);
+class ArticleSearchPage extends StatelessWidget {
+  const ArticleSearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,10 @@ class SearchPage extends StatelessWidget {
                   controller: controller,
                   onSubmitted: (text) {
                     List<Article> articles = context
-                        .read<ArticleFavoriteStatusUpdaterCubit>()
-                        .state
-                        .articles;
+                        .read<ArticleWatcherCubit>().state.maybeMap(loadSuccess: (state){
+                      return state
+                      .articles;
+                    },orElse: ()=>[]);
                     context
                         .read<ArticleSearcherCubit>()
                         .searchArticles(text, articles);
@@ -172,10 +173,10 @@ class SearchPage extends StatelessWidget {
                                           controller.text =
                                               searchHistoryList[index];
                                           List<Article> articles = context
-                                              .read<
-                                                  ArticleFavoriteStatusUpdaterCubit>()
-                                              .state
-                                              .articles;
+                                              .read<ArticleWatcherCubit>().state.maybeMap(loadSuccess: (state){
+                                            return state
+                                                .articles;
+                                          },orElse: ()=>[]);
                                           context
                                               .read<ArticleSearcherCubit>()
                                               .searchArticles(

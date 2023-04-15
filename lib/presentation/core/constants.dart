@@ -6,6 +6,7 @@ class PageRoutes {
   static const articlePage = "articlePage";
   static const introPage = "/intro";
   static const searchPage = "search";
+  static const savedPage = "saved";
 }
 
 class AppColorConstants {

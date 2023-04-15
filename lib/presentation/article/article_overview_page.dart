@@ -1,4 +1,3 @@
-import 'package:cash_manager/application/article/article_fav_status_updater/article_fav_status_updater_cubit.dart';
 import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart';
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/presentation/article/widgets/article_card.dart';
@@ -32,13 +31,15 @@ class ArticleOverviewPage extends StatelessWidget {
                     context.read<ArticleSearcherCubit>().loadSearchHistory();
                     goToSearchPage(context);
                   },
-                  icon: Icon(Icons.search)),
+                  icon: Icon(Icons.search,color: Colors.black,)),
               SizedBox(
                 width: 4,
               ),
               IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.bookmark_border_outlined)),
+                  onPressed: () {
+                    goToSavedPage(context);
+                  },
+                  icon: Icon(Icons.bookmark_border_outlined,color: Colors.black,)),
             ],
           ),
           SizedBox(
@@ -50,28 +51,20 @@ class ArticleOverviewPage extends StatelessWidget {
                   initial: (_) => const SizedBox(),
                   loadInProgress: (_) => CustomProgressIndicator(),
                   loadSuccess: (state) {
-                    context
-                        .read<ArticleFavoriteStatusUpdaterCubit>()
-                        .updateArticleList(state.articles);
-                    return BlocBuilder<ArticleFavoriteStatusUpdaterCubit,
-                        ArticleFavoriteStatusUpdaterState>(
-                      builder: (context, state) {
-                        return Expanded(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: state.articles.length,
-                              itemBuilder: (context, index) {
-                                final article = state.articles[index];
-                                return Padding(
-                                  padding:
-                                      const EdgeInsets.only(bottom: 16.0),
-                                  child: ArticleCard(
-                                    article: article,
-                                  ),
-                                );
-                              }),
-                        );
-                      },
+                    return Expanded(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: state.articles.length,
+                          itemBuilder: (context, index) {
+                            final article = state.articles[index];
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.only(bottom: 16.0),
+                              child: ArticleCard(
+                                article: article,
+                              ),
+                            );
+                          }),
                     );
                   },
                   loadFailure: (_) => CriticalFailureCard());
