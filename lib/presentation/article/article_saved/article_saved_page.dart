@@ -47,24 +47,48 @@ class ArticleSavedPage extends StatelessWidget {
             builder: (context, state) {
               return state.map(
                   initial: (_) => const SizedBox(),
-                  loadInProgress: (_) => CustomProgressIndicator(),
+                  loadInProgress: (_) => const CustomProgressIndicator(),
                   loadSuccess: (state) {
                     final List<Article> articles=state.articles.where((article) => article.isFav).toList();
-                    return Expanded(
-                      child: ListView.builder(
+                    if (articles.isEmpty) {
+                      return Expanded(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Add Bookmarks",
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Text(
+                                "Don't forget to bookmark the articles",
+
+                                textAlign:TextAlign.center,style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    } else {
+                      return ListView.builder(
                           shrinkWrap: true,
                           itemCount: articles.length,
                           itemBuilder: (context, index) {
                             final article = articles[index];
                             return Padding(
-                              padding:
-                              const EdgeInsets.only(bottom: 16.0),
+                              padding: const EdgeInsets.only(bottom: 16.0),
                               child: ArticleCard(
                                 article: article,
                               ),
                             );
-                          }),
-                    );
+                          });
+                    }
                   },
                   loadFailure: (_) => CriticalFailureCard());
             },
