@@ -1,6 +1,7 @@
 import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart';
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
+import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/presentation/article/widgets/article_card.dart';
 import 'package:cash_manager/presentation/article/widgets/custom_scaffold.dart';
 import 'package:cash_manager/presentation/core/router.dart';
@@ -42,31 +43,32 @@ class ArticleSavedPage extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          // BlocBuilder<FavArticleCubit, FavArticleState>(
-          //   builder: (context, state) {
-          //     return state.map(
-          //         initial: (_) => const SizedBox(),
-          //         loadInProgress: (_) => CustomProgressIndicator(),
-          //         loadSuccess: (state) {
-          //           return Expanded(
-          //             child: ListView.builder(
-          //                 shrinkWrap: true,
-          //                 itemCount: state.articles.length,
-          //                 itemBuilder: (context, index) {
-          //                   final article = state.articles[index];
-          //                   return Padding(
-          //                     padding:
-          //                     const EdgeInsets.only(bottom: 16.0),
-          //                     child: ArticleCard(
-          //                       article: article,
-          //                     ),
-          //                   );
-          //                 }),
-          //           );
-          //         },
-          //         loadFailure: (_) => CriticalFailureCard());
-          //   },
-          // )
+          BlocBuilder<ArticleWatcherCubit, ArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                  initial: (_) => const SizedBox(),
+                  loadInProgress: (_) => CustomProgressIndicator(),
+                  loadSuccess: (state) {
+                    final List<Article> articles=state.articles.where((article) => article.isFav).toList();
+                    return Expanded(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: articles.length,
+                          itemBuilder: (context, index) {
+                            final article = articles[index];
+                            return Padding(
+                              padding:
+                              const EdgeInsets.only(bottom: 16.0),
+                              child: ArticleCard(
+                                article: article,
+                              ),
+                            );
+                          }),
+                    );
+                  },
+                  loadFailure: (_) => CriticalFailureCard());
+            },
+          )
         ],
       ),
     );
