@@ -1,5 +1,6 @@
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
+import 'package:cash_manager/presentation/core/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -12,7 +13,7 @@ class ArticleCard extends StatelessWidget {
     final String formattedDate = DateFormat('d MMMM yyyy').format(article.date);
     return  InkWell(
       onTap: (){
-        //TODO implement articled tapping functionality
+        goToArticlePage(context,article);
       },
       child: Container(
         height: 60,
@@ -64,6 +65,7 @@ class ArticleCard extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
+                              color: Colors.blueGrey[900],
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                       ),

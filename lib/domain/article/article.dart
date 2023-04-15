@@ -16,7 +16,11 @@ abstract class Article implements _$Article {
     @Default(false)bool isFav,
     required DateTime date,
   }) = _Article;
-Option<ValueFailure<dynamic>> get failureOption {
+  factory Article.empty() {
+      return Article(uid: "uid", name: ArticleName(""), body: ArticleBody(""), image: "image", date: DateTime.now());
+  }
+
+  Option<ValueFailure<dynamic>> get failureOption {
   return name.failureOrUnit.andThen(body.failureOrUnit)
       .fold((l) => some(l), (r) => none());
 }

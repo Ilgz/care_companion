@@ -2,8 +2,10 @@ import 'package:cash_manager/domain/intro/intro_item.dart';
 import 'package:flutter/material.dart';
 
 class PageRoutes {
-  static const articlePage = "/article";
+  static const articleOverviewPage = "/articleOverview";
+  static const articlePage = "articlePage";
   static const introPage = "/intro";
+  static const searchPage = "search";
 }
 
 class AppColorConstants {
