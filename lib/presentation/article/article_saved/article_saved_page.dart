@@ -24,18 +24,12 @@ class ArticleSavedPage extends StatelessWidget {
               Expanded(child: Align(alignment:Alignment.centerLeft,child: IconButton(onPressed: (){
                 context.pop();
               } , icon: Icon(Icons.keyboard_backspace_outlined),color: Colors.black,))),
-              Expanded(
-                child: Center(
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      "Bookmarked",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
+              Text(
+                "Bookmarked",
+                style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
               Expanded(child: SizedBox())
             ],
@@ -65,7 +59,6 @@ class ArticleSavedPage extends StatelessWidget {
                               ),
                               Text(
                                 "Don't forget to bookmark the articles",
-
                                 textAlign:TextAlign.center,style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey,

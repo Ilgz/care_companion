@@ -24,7 +24,25 @@ class ArticleSearchPage extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: TextField(
+                child: BlocListener<ArticleWatcherCubit, ArticleWatcherState>(
+  listener: (context, state) {
+    state.maybeMap(
+      loadSuccess: (loadSuccessState) {
+        final searchTerm = context.read<ArticleSearcherCubit>().state.maybeWhen(
+          loaded: (searchResults, term) => term,
+          orElse: () => '',
+        );
+        if (searchTerm.isNotEmpty) {
+          final newArticles = loadSuccessState.articles;
+          context
+              .read<ArticleSearcherCubit>()
+              .searchArticles(searchTerm, newArticles);
+        }
+      },
+      orElse: () {},
+    );
+  },
+  child: TextField(
                   cursorColor: Color(0xfffd894f),
                   controller: controller,
                   onSubmitted: (text) {
@@ -36,6 +54,7 @@ class ArticleSearchPage extends StatelessWidget {
                     context
                         .read<ArticleSearcherCubit>()
                         .searchArticles(text, articles);
+                 //   context.read<ArticleSearcherCubit>().lis
                   },
                   decoration: InputDecoration(
                     isDense: true,
@@ -66,6 +85,7 @@ class ArticleSearchPage extends StatelessWidget {
                     ),
                   ),
                 ),
+),
               ),
               TextButton(
                   onPressed: () {
@@ -93,7 +113,7 @@ class ArticleSearchPage extends StatelessWidget {
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Text(
                                 "No results found",
                                 style: TextStyle(
