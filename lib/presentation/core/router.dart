@@ -4,48 +4,62 @@ import 'package:cash_manager/presentation/article/article_page.dart';
 import 'package:cash_manager/presentation/article/article_saved/article_saved_page.dart';
 import 'package:cash_manager/presentation/article/article_search/article_search_page.dart';
 import 'package:cash_manager/presentation/core/constants.dart';
+import 'package:cash_manager/presentation/core/widgets/scaffold_with_bottom.dart';
 import 'package:cash_manager/presentation/intro/intro_page.dart';
+import 'package:cash_manager/presentation/milestone/milestone_overview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
 final goRouter = GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: PageRoutes.articleOverviewPage,
     routes: [
-      GoRoute(
-
-        path: PageRoutes.articleOverviewPage,
-        pageBuilder: (context, state) => NoTransitionPage(
-          child: ArticleOverviewPage(),
-        ),
-          routes: [
-            GoRoute(
-              path: PageRoutes.searchPage,
+      ShellRoute(navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) {
+          return ScaffoldWithBottomNavBar(child: child);
+        },
+        routes: [
+          GoRoute(path: PageRoutes.milestoneOverviewPage, pageBuilder: (context, state) => NoTransitionPage(
+            child: MilestoneOverviewPage(),
+          ),)
+          ,
+          GoRoute(
+              path: PageRoutes.articleOverviewPage,
               pageBuilder: (context, state) => NoTransitionPage(
-                child: ArticleSearchPage(),
+                child: ArticleOverviewPage(),
               ),
-            ),
-            GoRoute(
-              path: PageRoutes.savedPage,
-              pageBuilder: (context, state) => NoTransitionPage(
-                child: ArticleSavedPage(),
-              ),
-            ),
-            GoRoute(
-              redirect: (context, state) {
-                if (state.extra == null) {
-                  return PageRoutes.articleOverviewPage;
-                }
-                return null;
-              },
-              path: PageRoutes.articlePage,
-              pageBuilder: (context, state) => NoTransitionPage(
-                child: ArticlePage( initialArticle: state.extra as Article,),
-              ),
-            ),
-          ]
+              routes: [
+                GoRoute(
+                  path: PageRoutes.searchPage,
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: ArticleSearchPage(),
+                  ),
+                ),
+                GoRoute(
+                  path: PageRoutes.savedPage,
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: ArticleSavedPage(),
+                  ),
+                ),
+                GoRoute(
+                  redirect: (context, state) {
+                    if (state.extra == null) {
+                      return PageRoutes.articleOverviewPage;
+                    }
+                    return null;
+                  },
+                  path: PageRoutes.articlePage,
+                  pageBuilder: (context, state) => NoTransitionPage(
+                    child: ArticlePage( initialArticle: state.extra as Article,),
+                  ),
+                ),
+              ]
+          ),
+        ]
       ),
+
       GoRoute(
           path: PageRoutes.introPage,
           pageBuilder: (context, state) => NoTransitionPage(

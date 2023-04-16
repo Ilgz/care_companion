@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class PageRoutes {
   static const articleOverviewPage = "/articleOverview";
+  static const milestoneOverviewPage = "/milestoneOverview";
   static const articlePage = "articlePage";
   static const introPage = "/intro";
   static const searchPage = "search";
