@@ -46,7 +46,7 @@ class CustomScaffold extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         body: ScrollConfiguration(
-          behavior: NoGlowNoScrollbarScrollBehavior(),
+          behavior: NoGlowNoScrollbarScrollBehavior().copyWith(scrollbars: false),
           child: Padding(
             padding: padding ?? const EdgeInsets.all(16.0).copyWith(bottom: 0),
             child: isScrolling
