@@ -46,7 +46,7 @@ class CustomScaffold extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         body: ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+          behavior: NoGlowNoScrollbarScrollBehavior(),
           child: Padding(
             padding: padding ?? const EdgeInsets.all(16.0).copyWith(bottom: 0),
             child: isScrolling
@@ -60,5 +60,17 @@ class CustomScaffold extends StatelessWidget {
         floatingActionButton: floatingActionButton,
       ),
     );
+  }
+
+}
+class NoGlowNoScrollbarScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return ClampingScrollPhysics();
   }
 }

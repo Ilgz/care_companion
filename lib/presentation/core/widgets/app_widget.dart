@@ -5,6 +5,7 @@ import 'package:cash_manager/application/article/fav_article_watcher/fav_article
 import 'package:cash_manager/injection.dart';
 import 'package:cash_manager/presentation/core/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppWidget extends StatelessWidget {
@@ -51,10 +52,16 @@ class AppWidget extends StatelessWidget {
                 loadInProgress: (_) {
                 });
           },
-          child: MaterialApp.router(
-            routerConfig: goRouter,
-            title: "Care Companion",
-            debugShowCheckedModeBanner: false,
+          child: AnnotatedRegion<SystemUiOverlayStyle>(
+            value:  SystemUiOverlayStyle(
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: Colors.grey[50]!, // set your desired status bar color here
+            ),
+            child: MaterialApp.router(
+              routerConfig: goRouter,
+              title: "Care Companion",
+              debugShowCheckedModeBanner: false,
+            ),
           ),
         );
       }),
