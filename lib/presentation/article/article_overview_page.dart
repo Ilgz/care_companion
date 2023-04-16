@@ -14,37 +14,25 @@ class ArticleOverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      title: "Articles",
+      actions: [
+        IconButton(
+            onPressed: () {
+              context.read<ArticleSearcherCubit>().loadSearchHistory();
+              goToSearchPage(context);
+            },
+            icon: const Icon(Icons.search,color: Colors.black,)),
+        const SizedBox(
+          width: 4,
+        ),
+        IconButton(
+            onPressed: () {
+              goToSavedPage(context);
+            },
+            icon: const Icon(Icons.bookmark_border_outlined,color: Colors.black,)),
+      ],
       body: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                "Articles",
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              Spacer(),
-              IconButton(
-                  onPressed: () {
-                    context.read<ArticleSearcherCubit>().loadSearchHistory();
-                    goToSearchPage(context);
-                  },
-                  icon: Icon(Icons.search,color: Colors.black,)),
-              SizedBox(
-                width: 4,
-              ),
-              IconButton(
-                  onPressed: () {
-                    goToSavedPage(context);
-                  },
-                  icon: Icon(Icons.bookmark_border_outlined,color: Colors.black,)),
-            ],
-          ),
-          SizedBox(
-            height: 8,
-          ),
           BlocBuilder<ArticleWatcherCubit, ArticleWatcherState>(
             builder: (context, state) {
               return state.map(
