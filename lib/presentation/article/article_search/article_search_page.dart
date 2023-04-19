@@ -2,7 +2,7 @@ import 'package:cash_manager/application/article/article_searcher/article_search
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/presentation/article/widgets/article_card.dart';
-import 'package:cash_manager/presentation/article/widgets/custom_scaffold.dart';
+import 'package:cash_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -18,86 +18,90 @@ class ArticleSearchPage extends StatelessWidget {
     return CustomScaffold(
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Row(
             children: [
               Expanded(
                 child: BlocListener<ArticleWatcherCubit, ArticleWatcherState>(
-  listener: (context, state) {
-    state.maybeMap(
-      loadSuccess: (loadSuccessState) {
-        final searchTerm = context.read<ArticleSearcherCubit>().state.maybeWhen(
-          loaded: (searchResults, term) => term,
-          orElse: () => '',
-        );
-        if (searchTerm.isNotEmpty) {
-          final newArticles = loadSuccessState.articles;
-          context
-              .read<ArticleSearcherCubit>()
-              .searchArticles(searchTerm, newArticles);
-        }
-      },
-      orElse: () {},
-    );
-  },
-  child: TextField(
-                  cursorColor: Color(0xfffd894f),
-                  controller: controller,
-                  onSubmitted: (text) {
-                    List<Article> articles = context
-                        .read<ArticleWatcherCubit>().state.maybeMap(loadSuccess: (state){
-                      return state
-                      .articles;
-                    },orElse: ()=>[]);
-                    context
-                        .read<ArticleSearcherCubit>()
-                        .searchArticles(text, articles);
-                 //   context.read<ArticleSearcherCubit>().lis
+                  listener: (context, state) {
+                    state.maybeMap(
+                      loadSuccess: (loadSuccessState) {
+                        final searchTerm = context
+                            .read<ArticleSearcherCubit>()
+                            .state
+                            .maybeWhen(
+                              loaded: (searchResults, term) => term,
+                              orElse: () => '',
+                            );
+                        if (searchTerm.isNotEmpty) {
+                          final newArticles = loadSuccessState.articles;
+                          context
+                              .read<ArticleSearcherCubit>()
+                              .searchArticles(searchTerm, newArticles);
+                        }
+                      },
+                      orElse: () {},
+                    );
                   },
-                  decoration: InputDecoration(
-                    isDense: true,
-                    filled: true,
-                    fillColor: Color(0xfff2f2f7),
-                    contentPadding: EdgeInsets.symmetric(vertical: 8),
-                    hintText: 'Search...',
-                    prefixIconConstraints: BoxConstraints(
-                        minWidth: 30,
-                        minHeight: 30,
-                        maxHeight: 31,
-                        maxWidth: 31),
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.transparent),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.transparent),
+                  child: TextField(
+                    cursorColor: const Color(0xfffd894f),
+                    controller: controller,
+                    onSubmitted: (text) {
+                      List<Article> articles =
+                          context.read<ArticleWatcherCubit>().state.maybeMap(
+                              loadSuccess: (state) {
+                                return state.articles;
+                              },
+                              orElse: () => []);
+                      context
+                          .read<ArticleSearcherCubit>()
+                          .searchArticles(text, articles);
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
+                    decoration: InputDecoration(
+                      isDense: true,
+                      filled: true,
+                      fillColor: const Color(0xfff2f2f7),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                      hintText: 'Search...',
+                      prefixIconConstraints: const BoxConstraints(
+                          minWidth: 30,
+                          minHeight: 30,
+                          maxHeight: 31,
+                          maxWidth: 31),
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      border: OutlineInputBorder(
+                        borderSide: const BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: const BorderSide(color: Colors.transparent),
+                      ),
                     ),
                   ),
                 ),
-),
               ),
               TextButton(
                   onPressed: () {
                     context.pop();
                   },
-                  child: Text(
+                  child: const Text(
                     "Cancel",
                     style: TextStyle(color: Color(0xfffd894f)),
                   ))
             ],
           ),
-          Divider(),
+          const Divider(),
           BlocBuilder<ArticleSearcherCubit, ArticleSearcherState>(
             buildWhen: (p, c) {
               return c.maybeMap(
@@ -148,16 +152,15 @@ class ArticleSearchPage extends StatelessWidget {
                     }
                   },
                   searchHistoryLoaded: (state) {
-                    final List<String> searchHistoryList =
-                        state.searchHistory;
+                    final List<String> searchHistoryList = state.searchHistory;
 
                     return searchHistoryList.isEmpty
-                        ? SizedBox()
+                        ? const SizedBox()
                         : Column(
                             children: [
                               Row(
                                 children: [
-                                  Text(
+                                  const Text(
                                     "Search history",
                                     style: TextStyle(
                                       fontSize: 18.0,
@@ -166,7 +169,7 @@ class ArticleSearchPage extends StatelessWidget {
                                       fontFamily: 'Montserrat',
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   TextButton(
                                       style: TextButton.styleFrom(
                                           alignment: Alignment.centerRight),
@@ -175,10 +178,10 @@ class ArticleSearchPage extends StatelessWidget {
                                             .read<ArticleSearcherCubit>()
                                             .clearSearchHistory();
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Clear",
-                                        style: TextStyle(
-                                            color: Color(0xfffd894f)),
+                                        style:
+                                            TextStyle(color: Color(0xfffd894f)),
                                       ))
                                 ],
                               ),
@@ -193,25 +196,29 @@ class ArticleSearchPage extends StatelessWidget {
                                           controller.text =
                                               searchHistoryList[index];
                                           List<Article> articles = context
-                                              .read<ArticleWatcherCubit>().state.maybeMap(loadSuccess: (state){
-                                            return state
-                                                .articles;
-                                          },orElse: ()=>[]);
+                                              .read<ArticleWatcherCubit>()
+                                              .state
+                                              .maybeMap(
+                                                  loadSuccess: (state) {
+                                                    return state.articles;
+                                                  },
+                                                  orElse: () => []);
                                           context
                                               .read<ArticleSearcherCubit>()
                                               .searchArticles(
                                                   controller.text, articles);
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
                                         },
                                         child: Text(
                                           searchHistoryList[index],
-                                          style:
-                                              TextStyle(color: Colors.black),
+                                          style: const TextStyle(color: Colors.black),
                                         ));
                                   }),
                             ],
                           );
                   },
-                  orElse: () => SizedBox());
+                  orElse: () => const SizedBox());
             },
           )
         ],

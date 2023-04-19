@@ -2,6 +2,7 @@ import 'package:cash_manager/application/article/article_searcher/article_search
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
+import 'package:cash_manager/application/milestone/milestone_watcher/milestone_watcher_cubit.dart';
 import 'package:cash_manager/injection.dart';
 import 'package:cash_manager/presentation/core/router.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => getIt<MilestoneWatcherCubit>()..getMilestones(),
+        ),
         BlocProvider(
           create: (context) => getIt<ArticleWatcherCubit>()..init()..getArticles(),
         ),

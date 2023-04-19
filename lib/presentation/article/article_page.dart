@@ -1,7 +1,7 @@
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
-import 'package:cash_manager/presentation/article/widgets/custom_scaffold.dart';
+import 'package:cash_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

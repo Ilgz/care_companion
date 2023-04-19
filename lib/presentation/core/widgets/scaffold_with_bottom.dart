@@ -33,7 +33,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
 
   final List<Widget> _mainContents = [
     const ArticleOverviewPage(),
-    const MilestoneOverviewPage(),
+     MilestoneOverviewPage(),
 
   ];
 
