@@ -48,13 +48,13 @@ final goRouter = GoRouter(
                 ),
                 GoRoute(
                   parentNavigatorKey: _rootNavigatorKey,
-                  // redirect: (context, state) {
-                  //   if (state.extra == null) {
-                  //       print("extra null");
-                  //     return PageRoutes.articleOverviewPage;
-                  //   }
-                  //   return null;
-                  // },
+                  redirect: (context, state) {
+                    if (state.extra == null) {
+                        print("extra null");
+                      return PageRoutes.articleOverviewPage;
+                    }
+                    return null;
+                  },
                   path: PageRoutes.articlePage,
                   pageBuilder: (context, state) => NoTransitionPage(
                     child: ArticlePage( initialArticle: state.extra as Article,),
