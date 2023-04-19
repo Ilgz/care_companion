@@ -107,10 +107,10 @@ class MilestoneRepository implements IMilestoneRepository {
       Milestone("Enjoys listening to stories", 2, 5),
       //2-3 Years
       Milestone("Most speech is understood by caregiver", 2, 6),
-      Milestone("Simple understanding of concepts including color, space, time", 2, 6),
+      Milestone("Simple understanding of concepts including color, space, time",
+          2, 6),
       Milestone("Understands most simple sentences", 2, 6),
       Milestone("Understands basic nouns and pronouns", 2, 6),
-      //4-6 Years
     ];
     return right(milestones);
   }

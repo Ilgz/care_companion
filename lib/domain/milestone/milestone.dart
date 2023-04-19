@@ -13,17 +13,17 @@ class Milestone {
     "4-6 Years"
   ];
   static final List<MilestoneCategory> milestoneCategories = [
-    MilestoneCategory(
+    const MilestoneCategory(
       "Motor",
       Icons.directions_walk_rounded,
       Color(0xffCE6C9F),
       Color(0xffF2E1E7),
     ),
-    MilestoneCategory("Sensory", Icons.remove_red_eye_rounded,
+    const MilestoneCategory("Sensory", Icons.remove_red_eye_rounded,
         Color(0xff76A322), Color(0xffE6EFD2)),
-    MilestoneCategory("Communication", Icons.insert_comment_outlined,
+    const MilestoneCategory("Communication", Icons.insert_comment_outlined,
         Color(0xffA46BB8), Color(0xffEDE0F2)),
-    MilestoneCategory("Feeding", Icons.food_bank_outlined, Color(0xffD6BC41),
+    const MilestoneCategory("Feeding", Icons.food_bank_outlined, Color(0xffD6BC41),
         Color(0xffF9F2D8)),
   ];
    String name;
