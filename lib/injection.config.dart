@@ -10,17 +10,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart'
-    as _i12;
-import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart'
-    as _i15;
-import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart'
     as _i13;
-import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart'
+import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart'
+    as _i16;
+import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart'
     as _i14;
-import 'package:cash_manager/application/milestone/milestone_filter/milestone_filter_cubit.dart'
+import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart'
+    as _i15;
+import 'package:cash_manager/application/milestone/milestone_actor/milestone_actor_cubit.dart'
     as _i10;
-import 'package:cash_manager/application/milestone/milestone_watcher/milestone_watcher_cubit.dart'
+import 'package:cash_manager/application/milestone/milestone_filter/milestone_filter_cubit.dart'
     as _i11;
+import 'package:cash_manager/application/milestone/milestone_watcher/milestone_watcher_cubit.dart'
+    as _i12;
 import 'package:cash_manager/domain/article/i_article_repository.dart' as _i6;
 import 'package:cash_manager/domain/milestone/i_milestone_repository.dart'
     as _i8;
@@ -28,7 +30,7 @@ import 'package:cash_manager/domain/milestone/milestone.dart' as _i4;
 import 'package:cash_manager/infrastructure/article/article_repository.dart'
     as _i7;
 import 'package:cash_manager/infrastructure/core/app_injectable_module.dart'
-    as _i16;
+    as _i17;
 import 'package:cash_manager/infrastructure/milestone/milestone_repository.dart'
     as _i9;
 import 'package:get_it/get_it.dart' as _i1;
@@ -70,21 +72,23 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.lazySingleton<_i8.IMilestoneRepository>(() => _i9.MilestoneRepository(
         gh<_i3.Box<_i4.Milestone>>(instanceName: 'milestoneBox')));
-    gh.factory<_i10.MilestoneFilterCubit>(() => _i10.MilestoneFilterCubit());
-    gh.singleton<_i11.MilestoneWatcherCubit>(
-        _i11.MilestoneWatcherCubit(gh<_i8.IMilestoneRepository>()));
-    gh.factory<_i12.ArticleSearcherCubit>(
-        () => _i12.ArticleSearcherCubit(gh<_i6.IArticleRepository>()));
-    gh.singleton<_i13.FavArticleActorCubit>(
-        _i13.FavArticleActorCubit(gh<_i6.IArticleRepository>()));
-    gh.singleton<_i14.FavArticleCubit>(
-        _i14.FavArticleCubit(gh<_i6.IArticleRepository>()));
-    gh.factory<_i15.ArticleWatcherCubit>(() => _i15.ArticleWatcherCubit(
+    gh.factory<_i10.MilestoneActorCubit>(
+        () => _i10.MilestoneActorCubit(gh<_i8.IMilestoneRepository>()));
+    gh.factory<_i11.MilestoneFilterCubit>(() => _i11.MilestoneFilterCubit());
+    gh.singleton<_i12.MilestoneWatcherCubit>(
+        _i12.MilestoneWatcherCubit(gh<_i8.IMilestoneRepository>()));
+    gh.factory<_i13.ArticleSearcherCubit>(
+        () => _i13.ArticleSearcherCubit(gh<_i6.IArticleRepository>()));
+    gh.singleton<_i14.FavArticleActorCubit>(
+        _i14.FavArticleActorCubit(gh<_i6.IArticleRepository>()));
+    gh.singleton<_i15.FavArticleCubit>(
+        _i15.FavArticleCubit(gh<_i6.IArticleRepository>()));
+    gh.factory<_i16.ArticleWatcherCubit>(() => _i16.ArticleWatcherCubit(
           gh<_i6.IArticleRepository>(),
-          gh<_i14.FavArticleCubit>(),
+          gh<_i15.FavArticleCubit>(),
         ));
     return this;
   }
 }
 
-class _$AppInjectableProdModule extends _i16.AppInjectableProdModule {}
+class _$AppInjectableProdModule extends _i17.AppInjectableProdModule {}

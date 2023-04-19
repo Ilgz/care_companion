@@ -1,5 +1,7 @@
+import 'package:cash_manager/application/milestone/milestone_actor/milestone_actor_cubit.dart';
 import 'package:cash_manager/domain/milestone/milestone.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MilestoneCard extends StatelessWidget {
   const MilestoneCard({Key? key, required this.milestone}) : super(key: key);
@@ -210,7 +212,15 @@ class CompletionPhaseRadio extends StatelessWidget {
             activeColor: Color(0xfffd894f),
             value: phases[radioCompletionPhase],
             groupValue: phases[milestone.completionPhaseIndex],
-            onChanged: (String? value) {},
+            onChanged: (String? value) {
+              if(value!=null){
+                print("radiod");
+                milestone.completionPhaseIndex=phases.indexWhere((phase) => phase==value,0);
+                print(milestone.completionPhaseIndex);
+                  context.read<MilestoneActorCubit>().changeCompletionPhase(milestone);
+                Navigator.pop(context);
+              }
+            },
           ),
         ),
       ],),

@@ -2,6 +2,7 @@ import 'package:cash_manager/application/article/article_searcher/article_search
 import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart';
 import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
+import 'package:cash_manager/application/milestone/milestone_actor/milestone_actor_cubit.dart';
 import 'package:cash_manager/application/milestone/milestone_filter/milestone_filter_cubit.dart';
 import 'package:cash_manager/application/milestone/milestone_watcher/milestone_watcher_cubit.dart';
 import 'package:cash_manager/injection.dart';
@@ -22,6 +23,9 @@ class AppWidget extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => getIt<MilestoneFilterCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<MilestoneActorCubit>(),
         ),
         BlocProvider(
           create: (context) => getIt<ArticleWatcherCubit>()..init()..getArticles(),

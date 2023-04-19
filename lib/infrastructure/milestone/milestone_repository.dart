@@ -21,6 +21,9 @@ class MilestoneRepository implements IMilestoneRepository {
       }, (milestones) async {
         final index=milestones.indexWhere((milestone) => milestone.name==updateMilestone.name);
         if (index != -1) {
+          if(_milestoneBox.isEmpty){
+          await  _milestoneBox.addAll(milestones);
+          }
           _milestoneBox.putAt(index, updateMilestone);
           return right(unit);
         } else {
@@ -37,7 +40,7 @@ class MilestoneRepository implements IMilestoneRepository {
   @override
   Future<Either<MilestoneFailure, List<Milestone>>> getMilestones() async {
     late final List<Milestone> milestones;
-    if (_milestoneBox.values.isEmpty) {
+    if (_milestoneBox.values.isNotEmpty) {
       milestones = _milestoneBox.values.toList();
     } else {
       milestones = [
