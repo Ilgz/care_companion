@@ -13,7 +13,6 @@ class MilestoneFilterCubit extends Cubit<MilestoneFilterState> {
     emit(state.copyWith(ageRange: ageRange));
     filterMilestonesByAgeRange(milestones);
   }
-
   changeDropdownStatus(bool status) {
     emit(state.copyWith(isDropdownActive: status));
   }

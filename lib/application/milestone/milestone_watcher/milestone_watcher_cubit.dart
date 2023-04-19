@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 part 'milestone_watcher_state.dart';
 part 'milestone_watcher_cubit.freezed.dart';
 
-@injectable
+@singleton
 class MilestoneWatcherCubit extends Cubit<MilestoneWatcherState> {
   final IMilestoneRepository _iMilestoneRepository;
   MilestoneWatcherCubit(this._iMilestoneRepository)

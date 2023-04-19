@@ -29,22 +29,22 @@ class MilestoneOverviewPage extends StatelessWidget {
                 builder: (context, state) {
                   return Column(
                     children: [
-                      AgeRangeDropdown(
-                        ageRange: state.ageRange,
-                        isDropdownActive: state.isDropdownActive,
-                        onChanged: (value) {
-                          if (value != null) {
-                            context.read<MilestoneFilterCubit>().changeAgeRange(
-                                value, watcherSuccessState.milestones);
-                          }
-                        },
-                        onMenuStateChange: (isOpened) {
-                          context
-                              .read<MilestoneFilterCubit>()
-                              .changeDropdownStatus(isOpened);
-                        },
-                      ),
-                      const SizedBox(height: 16),
+                      // AgeRangeDropdown(
+                      //   ageRange: state.ageRange,
+                      //   isDropdownActive: state.isDropdownActive,
+                      //   onChanged: (value) {
+                      //     if (value != null) {
+                      //       context.read<MilestoneFilterCubit>().changeAgeRange(
+                      //           value, watcherSuccessState.milestones);
+                      //     }
+                      //   },
+                      //   onMenuStateChange: (isOpened) {
+                      //     context
+                      //         .read<MilestoneFilterCubit>()
+                      //         .changeDropdownStatus(isOpened);
+                      //   },
+                      // ),
+                      // const SizedBox(height: 16),
                       MilestoneList(milestones: state.milestones),
                     ],
                   );

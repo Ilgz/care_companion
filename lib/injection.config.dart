@@ -64,8 +64,8 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.lazySingleton<_i7.IMilestoneRepository>(() => _i8.MilestoneRepository());
     gh.factory<_i9.MilestoneFilterCubit>(() => _i9.MilestoneFilterCubit());
-    gh.factory<_i10.MilestoneWatcherCubit>(
-        () => _i10.MilestoneWatcherCubit(gh<_i7.IMilestoneRepository>()));
+    gh.singleton<_i10.MilestoneWatcherCubit>(
+        _i10.MilestoneWatcherCubit(gh<_i7.IMilestoneRepository>()));
     gh.factory<_i11.ArticleSearcherCubit>(
         () => _i11.ArticleSearcherCubit(gh<_i5.IArticleRepository>()));
     gh.singleton<_i12.FavArticleActorCubit>(

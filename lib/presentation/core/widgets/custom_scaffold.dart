@@ -42,8 +42,7 @@ class CustomScaffold extends StatelessWidget {
           ):null,
           actions: actions,
           elevation: 0,
-
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.grey[50],
         ),
         body: ScrollConfiguration(
           behavior: NoGlowNoScrollbarScrollBehavior().copyWith(scrollbars: false),
