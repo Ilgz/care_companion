@@ -95,21 +95,19 @@ class MilestoneList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: milestones.length,
-        itemBuilder: (context, index) {
-          final milestone = milestones[index];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: MilestoneCard(
-              milestone: milestone,
-            ),
-          );
-        },
-      ),
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: milestones.length,
+      itemBuilder: (context, index) {
+        final milestone = milestones[index];
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16.0),
+          child: MilestoneCard(
+            milestone: milestone,
+          ),
+        );
+      },
     );
   }
 }

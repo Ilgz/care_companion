@@ -30,26 +30,31 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) => NoTransitionPage(
                 child: ArticleOverviewPage(),
               ),
+
               routes: [
                 GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
                   path: PageRoutes.searchPage,
                   pageBuilder: (context, state) => NoTransitionPage(
                     child: ArticleSearchPage(),
                   ),
                 ),
                 GoRoute(
+                  parentNavigatorKey: _rootNavigatorKey,
                   path: PageRoutes.savedPage,
                   pageBuilder: (context, state) => NoTransitionPage(
                     child: ArticleSavedPage(),
                   ),
                 ),
                 GoRoute(
-                  redirect: (context, state) {
-                    if (state.extra == null) {
-                      return PageRoutes.articleOverviewPage;
-                    }
-                    return null;
-                  },
+                  parentNavigatorKey: _rootNavigatorKey,
+                  // redirect: (context, state) {
+                  //   if (state.extra == null) {
+                  //       print("extra null");
+                  //     return PageRoutes.articleOverviewPage;
+                  //   }
+                  //   return null;
+                  // },
                   path: PageRoutes.articlePage,
                   pageBuilder: (context, state) => NoTransitionPage(
                     child: ArticlePage( initialArticle: state.extra as Article,),
