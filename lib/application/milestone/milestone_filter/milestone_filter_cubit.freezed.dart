@@ -17,8 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MilestoneFilterState {
   String get ageRange => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   List<Milestone> get milestones => throw _privateConstructorUsedError;
-  bool get isDropdownActive => throw _privateConstructorUsedError;
+  bool get isCategoryDropdownActive => throw _privateConstructorUsedError;
+  bool get isAgeRangeDropdownActive => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MilestoneFilterStateCopyWith<MilestoneFilterState> get copyWith =>
@@ -32,7 +34,11 @@ abstract class $MilestoneFilterStateCopyWith<$Res> {
       _$MilestoneFilterStateCopyWithImpl<$Res, MilestoneFilterState>;
   @useResult
   $Res call(
-      {String ageRange, List<Milestone> milestones, bool isDropdownActive});
+      {String ageRange,
+      String category,
+      List<Milestone> milestones,
+      bool isCategoryDropdownActive,
+      bool isAgeRangeDropdownActive});
 }
 
 /// @nodoc
@@ -50,21 +56,31 @@ class _$MilestoneFilterStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? ageRange = null,
+    Object? category = null,
     Object? milestones = null,
-    Object? isDropdownActive = null,
+    Object? isCategoryDropdownActive = null,
+    Object? isAgeRangeDropdownActive = null,
   }) {
     return _then(_value.copyWith(
       ageRange: null == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       milestones: null == milestones
           ? _value.milestones
           : milestones // ignore: cast_nullable_to_non_nullable
               as List<Milestone>,
-      isDropdownActive: null == isDropdownActive
-          ? _value.isDropdownActive
-          : isDropdownActive // ignore: cast_nullable_to_non_nullable
+      isCategoryDropdownActive: null == isCategoryDropdownActive
+          ? _value.isCategoryDropdownActive
+          : isCategoryDropdownActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isAgeRangeDropdownActive: null == isAgeRangeDropdownActive
+          ? _value.isAgeRangeDropdownActive
+          : isAgeRangeDropdownActive // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -79,7 +95,11 @@ abstract class _$$_MilestoneFilterStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String ageRange, List<Milestone> milestones, bool isDropdownActive});
+      {String ageRange,
+      String category,
+      List<Milestone> milestones,
+      bool isCategoryDropdownActive,
+      bool isAgeRangeDropdownActive});
 }
 
 /// @nodoc
@@ -94,21 +114,31 @@ class __$$_MilestoneFilterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ageRange = null,
+    Object? category = null,
     Object? milestones = null,
-    Object? isDropdownActive = null,
+    Object? isCategoryDropdownActive = null,
+    Object? isAgeRangeDropdownActive = null,
   }) {
     return _then(_$_MilestoneFilterState(
       null == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as String,
+      null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       null == milestones
           ? _value._milestones
           : milestones // ignore: cast_nullable_to_non_nullable
               as List<Milestone>,
-      null == isDropdownActive
-          ? _value.isDropdownActive
-          : isDropdownActive // ignore: cast_nullable_to_non_nullable
+      null == isCategoryDropdownActive
+          ? _value.isCategoryDropdownActive
+          : isCategoryDropdownActive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      null == isAgeRangeDropdownActive
+          ? _value.isAgeRangeDropdownActive
+          : isAgeRangeDropdownActive // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -118,11 +148,17 @@ class __$$_MilestoneFilterStateCopyWithImpl<$Res>
 
 class _$_MilestoneFilterState implements _MilestoneFilterState {
   _$_MilestoneFilterState(
-      this.ageRange, final List<Milestone> milestones, this.isDropdownActive)
+      this.ageRange,
+      this.category,
+      final List<Milestone> milestones,
+      this.isCategoryDropdownActive,
+      this.isAgeRangeDropdownActive)
       : _milestones = milestones;
 
   @override
   final String ageRange;
+  @override
+  final String category;
   final List<Milestone> _milestones;
   @override
   List<Milestone> get milestones {
@@ -132,11 +168,13 @@ class _$_MilestoneFilterState implements _MilestoneFilterState {
   }
 
   @override
-  final bool isDropdownActive;
+  final bool isCategoryDropdownActive;
+  @override
+  final bool isAgeRangeDropdownActive;
 
   @override
   String toString() {
-    return 'MilestoneFilterState(ageRange: $ageRange, milestones: $milestones, isDropdownActive: $isDropdownActive)';
+    return 'MilestoneFilterState(ageRange: $ageRange, category: $category, milestones: $milestones, isCategoryDropdownActive: $isCategoryDropdownActive, isAgeRangeDropdownActive: $isAgeRangeDropdownActive)';
   }
 
   @override
@@ -146,15 +184,26 @@ class _$_MilestoneFilterState implements _MilestoneFilterState {
             other is _$_MilestoneFilterState &&
             (identical(other.ageRange, ageRange) ||
                 other.ageRange == ageRange) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             const DeepCollectionEquality()
                 .equals(other._milestones, _milestones) &&
-            (identical(other.isDropdownActive, isDropdownActive) ||
-                other.isDropdownActive == isDropdownActive));
+            (identical(
+                    other.isCategoryDropdownActive, isCategoryDropdownActive) ||
+                other.isCategoryDropdownActive == isCategoryDropdownActive) &&
+            (identical(
+                    other.isAgeRangeDropdownActive, isAgeRangeDropdownActive) ||
+                other.isAgeRangeDropdownActive == isAgeRangeDropdownActive));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, ageRange,
-      const DeepCollectionEquality().hash(_milestones), isDropdownActive);
+  int get hashCode => Object.hash(
+      runtimeType,
+      ageRange,
+      category,
+      const DeepCollectionEquality().hash(_milestones),
+      isCategoryDropdownActive,
+      isAgeRangeDropdownActive);
 
   @JsonKey(ignore: true)
   @override
@@ -167,15 +216,21 @@ class _$_MilestoneFilterState implements _MilestoneFilterState {
 abstract class _MilestoneFilterState implements MilestoneFilterState {
   factory _MilestoneFilterState(
       final String ageRange,
+      final String category,
       final List<Milestone> milestones,
-      final bool isDropdownActive) = _$_MilestoneFilterState;
+      final bool isCategoryDropdownActive,
+      final bool isAgeRangeDropdownActive) = _$_MilestoneFilterState;
 
   @override
   String get ageRange;
   @override
+  String get category;
+  @override
   List<Milestone> get milestones;
   @override
-  bool get isDropdownActive;
+  bool get isCategoryDropdownActive;
+  @override
+  bool get isAgeRangeDropdownActive;
   @override
   @JsonKey(ignore: true)
   _$$_MilestoneFilterStateCopyWith<_$_MilestoneFilterState> get copyWith =>

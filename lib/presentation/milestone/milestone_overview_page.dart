@@ -5,6 +5,7 @@ import 'package:cash_manager/presentation/core/widgets/critical_failure_card.dar
 import 'package:cash_manager/presentation/core/widgets/custom_progress_indicator.dart';
 import 'package:cash_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:cash_manager/presentation/milestone/widgets/age_range_dropdown.dart';
+import 'package:cash_manager/presentation/milestone/widgets/category_dropdown.dart';
 import 'package:cash_manager/presentation/milestone/widgets/milestone_card.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MilestoneOverviewPage extends StatelessWidget {
   const MilestoneOverviewPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -24,28 +26,51 @@ class MilestoneOverviewPage extends StatelessWidget {
             loadSuccess: (watcherSuccessState) {
               context
                   .read<MilestoneFilterCubit>()
-                  .filterMilestonesByAgeRange(watcherSuccessState.milestones);
+                  .updateMilestones(watcherSuccessState.milestones);
               return BlocBuilder<MilestoneFilterCubit, MilestoneFilterState>(
                 builder: (context, state) {
-                  return Column(
+                  return ListView(
                     children: [
-                      // AgeRangeDropdown(
-                      //   ageRange: state.ageRange,
-                      //   isDropdownActive: state.isDropdownActive,
-                      //   onChanged: (value) {
-                      //     if (value != null) {
-                      //       context.read<MilestoneFilterCubit>().changeAgeRange(
-                      //           value, watcherSuccessState.milestones);
-                      //     }
-                      //   },
-                      //   onMenuStateChange: (isOpened) {
-                      //     context
-                      //         .read<MilestoneFilterCubit>()
-                      //         .changeDropdownStatus(isOpened);
-                      //   },
-                      // ),
-                      // const SizedBox(height: 16),
-                      MilestoneList(milestones: state.milestones),
+                      AgeRangeDropdown(
+                        ageRange: state.ageRange,
+                        isDropdownActive: state.isAgeRangeDropdownActive,
+                        onChanged: (value) {
+                          if (value != null) {
+                            context.read<MilestoneFilterCubit>().changeAgeRange(
+                                value, watcherSuccessState.milestones);
+                          }
+                        },
+                        onMenuStateChange: (isOpened) {
+                          context
+                              .read<MilestoneFilterCubit>()
+                              .changeAgeRangeDropdownStatus(isOpened);
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      CategoryDropdown(
+                        category: state.category,
+                        isDropdownActive: state.isCategoryDropdownActive,
+                        onChanged: (value) {
+                          if (value != null) {
+                            context.read<MilestoneFilterCubit>().changeCategory(
+                                value, watcherSuccessState.milestones);
+                          }
+                        },
+                        onMenuStateChange: (isOpened) {
+                          context
+                              .read<MilestoneFilterCubit>()
+                              .changeCategoryDropdownStatus(isOpened);
+                        },
+                      ),
+                      const SizedBox(height: 16),
+
+                      state.milestones.isEmpty
+                          ? Container(padding:EdgeInsets.all(16),decoration: BoxDecoration(borderRadius:BorderRadius.circular(16),color:Color(0xfffd894f).withOpacity(0.2)),
+                          child: Text(
+                            "There are no milestones related to this age range or topic. Try changing the age range filter.",
+                            style: TextStyle(
+                                color: Colors.black, fontSize: 16),))
+                          : MilestoneList(milestones: state.milestones),
                     ],
                   );
                 },
@@ -58,7 +83,6 @@ class MilestoneOverviewPage extends StatelessWidget {
     );
   }
 }
-
 
 
 class MilestoneList extends StatelessWidget {
@@ -74,6 +98,7 @@ class MilestoneList extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: milestones.length,
         itemBuilder: (context, index) {
           final milestone = milestones[index];

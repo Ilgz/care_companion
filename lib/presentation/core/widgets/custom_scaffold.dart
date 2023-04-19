@@ -24,6 +24,7 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey[50],
         appBar: title==null?null:AppBar(
           automaticallyImplyLeading: false,
           title: Text(

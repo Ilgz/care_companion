@@ -11,22 +11,47 @@ class MilestoneFilterCubit extends Cubit<MilestoneFilterState> {
   MilestoneFilterCubit() : super(MilestoneFilterState.initial());
   changeAgeRange(String ageRange,List<Milestone> milestones) {
     emit(state.copyWith(ageRange: ageRange));
-    filterMilestonesByAgeRange(milestones);
+    updateMilestones(milestones);
   }
-  changeDropdownStatus(bool status) {
-    emit(state.copyWith(isDropdownActive: status));
+  changeCategory(String category,List<Milestone> milestones) {
+    emit(state.copyWith(category: category));
+    updateMilestones(milestones);
   }
-  filterMilestonesByAgeRange(List<Milestone> milestones) {
+  changeAgeRangeDropdownStatus(bool status) {
+    emit(state.copyWith(isAgeRangeDropdownActive: status));
+  }
+  changeCategoryDropdownStatus(bool status) {
+    emit(state.copyWith(isCategoryDropdownActive: status));
+  }
+  updateMilestones(List<Milestone> milestones){
+   final filteredByAgeRangeMilestones= _filterMilestonesByAgeRange(milestones);
+   final updatedMilestones=_filterMilestonesByCategory(filteredByAgeRangeMilestones);
+   emit(state.copyWith(milestones: updatedMilestones));
+  }
+  List<Milestone> _filterMilestonesByAgeRange(List<Milestone> milestones) {
     if (state.ageRange == "All ages") {
-      emit(state.copyWith(milestones: milestones));
+      return milestones;
     } else {
       final filteredMilestones = milestones
           .toList()
           .where((milestone) {
         return Milestone.ageRangeDivisions[milestone.ageRangeIndex] ==
-              state.ageRange;})
+            state.ageRange;})
           .toList();
-      emit(state.copyWith(milestones: filteredMilestones));
+      return filteredMilestones;
+    }
+  }
+  List<Milestone> _filterMilestonesByCategory(List<Milestone> milestones) {
+    if (state.category == "Showing all topics") {
+      return milestones;
+    } else {
+      final filteredMilestones = milestones
+          .toList()
+          .where((milestone) {
+        return Milestone.milestoneCategories[milestone.category].name ==
+              state.category;})
+          .toList();
+      return filteredMilestones;
     }
   }
 }
