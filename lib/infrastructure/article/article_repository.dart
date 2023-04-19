@@ -10,7 +10,6 @@ import 'package:injectable/injectable.dart';
 class ArticleRepository implements IArticleRepository {
   final Box<String> _favArticleBox;
   final Box<String> _searchHistoryBox;
-
   ArticleRepository(@Named("favArticleUidBox") this._favArticleBox,
       @Named("searchHistoryBox") this._searchHistoryBox);
 

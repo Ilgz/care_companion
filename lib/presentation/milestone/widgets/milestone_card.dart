@@ -12,10 +12,9 @@ class MilestoneCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: Ink(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all( color:Color(0xfffd894f).withOpacity(0.2))
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Color(0xfffd894f).withOpacity(0.2))),
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
@@ -27,7 +26,8 @@ class MilestoneCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
-                      Milestone.milestoneCategories[milestone.category].iconData,
+                      Milestone
+                          .milestoneCategories[milestone.category].iconData,
                       size: 16,
                       color: Milestone
                           .milestoneCategories[milestone.category].iconColor,
@@ -66,7 +66,79 @@ class MilestoneCard extends StatelessWidget {
             InkWell(
               highlightColor: Color(0xfffd894f).withOpacity(0.2),
               borderRadius: BorderRadius.circular(12),
-              onTap: () {},
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Dialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 16,),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    milestone.name,
+                                    style: TextStyle(
+                                        color: Colors.blueGrey[900],
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                InkWell(
+                                  highlightColor: Color(0xfffd894f).withOpacity(0.2),
+                                  borderRadius: BorderRadius.circular(8),
+                                  onTap: (){
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                    width: 50,
+                                      height: 50,
+                                      padding: EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                          borderRadius: BorderRadius.circular(8),
+                                          border: Border.all(
+                                              color: Color(0xfffd894f)
+                                                  .withOpacity(0.3))),
+                                      child: Icon(
+                                        Icons.close,
+                                        color: Color(0xfffd894f),
+                                      )),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 16,),
+                          Theme(
+                            data: ThemeData(
+                              unselectedWidgetColor: Color(0xfffd894f),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                   CompletionPhaseRadio(radioCompletionPhase: 0, milestone: milestone),
+                                Divider(),
+                                CompletionPhaseRadio(radioCompletionPhase: 1, milestone: milestone),
+                                Divider(),
+                                CompletionPhaseRadio(radioCompletionPhase: 2, milestone: milestone),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 16,),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.all(16),
@@ -117,3 +189,32 @@ class MilestoneCard extends StatelessWidget {
     );
   }
 }
+class CompletionPhaseRadio extends StatelessWidget {
+  const CompletionPhaseRadio({Key? key, required this.radioCompletionPhase, required this.milestone}) : super(key: key);
+  final int radioCompletionPhase;
+  final Milestone milestone;
+  static const phases=["Not started","Making progress","Achieved"];
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(children: [
+        SizedBox(width: 8,),
+        Text(phases[radioCompletionPhase],style:TextStyle(
+            color: Colors.blueGrey[900],
+            fontWeight: FontWeight.w600)),
+        Spacer(),
+        Transform.scale(
+          scale: 0.8,
+          child: Radio<String>(
+            activeColor: Color(0xfffd894f),
+            value: phases[radioCompletionPhase],
+            groupValue: phases[milestone.completionPhaseIndex],
+            onChanged: (String? value) {},
+          ),
+        ),
+      ],),
+    );
+  }
+}
+

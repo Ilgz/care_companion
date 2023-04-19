@@ -1,6 +1,9 @@
 import 'package:cash_manager/domain/milestone/milestone_category.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+part 'milestone.g.dart';
 
+@HiveType(typeId: 0)
 class Milestone {
   static final List<String> ageRangeDivisions = [
     "0-3 Months",
@@ -26,9 +29,16 @@ class Milestone {
     const MilestoneCategory("Feeding", Icons.food_bank_outlined, Color(0xffD6BC41),
         Color(0xffF9F2D8)),
   ];
-   String name;
-   int category;
-   int ageRangeIndex;
-   int completionPhaseIndex;
+  @HiveField(0)
+  String name;
+
+  @HiveField(1)
+  int category;
+
+  @HiveField(2)
+  int ageRangeIndex;
+
+  @HiveField(3)
+  int completionPhaseIndex;
   Milestone(this.name, this.category, this.ageRangeIndex, {this.completionPhaseIndex=0});
 }
