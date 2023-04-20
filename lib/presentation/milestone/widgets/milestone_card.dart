@@ -80,9 +80,12 @@ class MilestoneCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 16,),
+                          SizedBox(
+                            height: 16,
+                          ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
                             child: Row(
                               children: [
                                 Expanded(
@@ -95,18 +98,20 @@ class MilestoneCard extends StatelessWidget {
                                   ),
                                 ),
                                 InkWell(
-                                  highlightColor: Color(0xfffd894f).withOpacity(0.2),
+                                  highlightColor:
+                                      Color(0xfffd894f).withOpacity(0.2),
                                   borderRadius: BorderRadius.circular(8),
-                                  onTap: (){
+                                  onTap: () {
                                     Navigator.pop(context);
                                   },
                                   child: Container(
-                                    width: 50,
+                                      width: 50,
                                       height: 50,
                                       padding: EdgeInsets.all(8),
                                       decoration: BoxDecoration(
                                           color: Colors.transparent,
-                                          borderRadius: BorderRadius.circular(8),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                                           border: Border.all(
                                               color: Color(0xfffd894f)
                                                   .withOpacity(0.3))),
@@ -118,7 +123,9 @@ class MilestoneCard extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(height: 16,),
+                          SizedBox(
+                            height: 16,
+                          ),
                           Theme(
                             data: ThemeData(
                               unselectedWidgetColor: Color(0xfffd894f),
@@ -126,15 +133,23 @@ class MilestoneCard extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                   CompletionPhaseRadio(radioCompletionPhase: 0, milestone: milestone),
+                                CompletionPhaseRadio(
+                                    radioCompletionPhase: 0,
+                                    milestone: milestone),
                                 Divider(),
-                                CompletionPhaseRadio(radioCompletionPhase: 1, milestone: milestone),
+                                CompletionPhaseRadio(
+                                    radioCompletionPhase: 1,
+                                    milestone: milestone),
                                 Divider(),
-                                CompletionPhaseRadio(radioCompletionPhase: 2, milestone: milestone),
+                                CompletionPhaseRadio(
+                                    radioCompletionPhase: 2,
+                                    milestone: milestone),
                               ],
                             ),
                           ),
-                          SizedBox(height: 16,),
+                          SizedBox(
+                            height: 16,
+                          ),
                         ],
                       ),
                     );
@@ -142,48 +157,25 @@ class MilestoneCard extends StatelessWidget {
                 );
               },
               child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    border:
-                        Border.all(color: Color(0xfffd894f).withOpacity(0.5))),
-                child: Row(
-                  children: [
-                    Text(
-                      "Making progress",
-                      style: TextStyle(fontSize: 16, color: Color(0xfffd894f)),
-                    ),
-                    Spacer(),
-                    Container(
-                        width: 16,
-                        height: 16,
-                        padding: EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(50),
-                            border:
-                                Border.all(width: 2, color: Color(0xfffd894f))),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xfffd894f),
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(50),
-                                        bottomLeft: Radius.circular(50))),
-                              ),
-                            ),
-                            Expanded(
-                              child: SizedBox(),
-                            ),
-                          ],
-                        ))
-                    // Container(width:14,height:14,padding:EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50),border: Border.all(color:Color(0xfffd894f))),child: Center(child: LeftSemicircleFill(color: Colors.yellow, width:4, height:18  )))
-                  ],
-                ),
-              ),
+                  width: double.infinity,
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                      gradient: milestone.completionPhaseIndex == 2
+                          ? const LinearGradient(
+                              colors: [
+                                Color(0xfffd894f),
+                                Color(0xfffd894f),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            )
+                          : null,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                          color: Color(0xfffd894f).withOpacity(0.5))),
+                  child: CompletionPhaseButton(
+                    milestone: milestone,
+                  )),
             ),
           ],
         ),
@@ -191,40 +183,142 @@ class MilestoneCard extends StatelessWidget {
     );
   }
 }
+
+class CompletionPhaseButton extends StatelessWidget {
+  const CompletionPhaseButton({Key? key, required this.milestone})
+      : super(key: key);
+  final Milestone milestone;
+
+  @override
+  Widget build(BuildContext context) {
+    if (milestone.completionPhaseIndex == 0) {
+      return Row(
+        children: [
+          Text(
+            "Not started",
+            style: TextStyle(fontSize: 16, color: Color(0xfffd894f)),
+          ),
+          Spacer(),
+          Container(
+              width: 16,
+              height: 16,
+              padding: EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(width: 2, color: Color(0xfffd894f))),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                ],
+              ))
+          // Container(width:14,height:14,padding:EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50),border: Border.all(color:Color(0xfffd894f))),child: Center(child: LeftSemicircleFill(color: Colors.yellow, width:4, height:18  )))
+        ],
+      );
+    } else if (milestone.completionPhaseIndex == 1) {
+      return Row(
+        children: [
+          Text(
+            "Making progress",
+            style: TextStyle(fontSize: 16, color: Color(0xfffd894f)),
+          ),
+          Spacer(),
+          Container(
+              width: 16,
+              height: 16,
+              padding: EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(width: 2, color: Color(0xfffd894f))),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xfffd894f),
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(50),
+                              bottomLeft: Radius.circular(50))),
+                    ),
+                  ),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                ],
+              ))
+          // Container(width:14,height:14,padding:EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50),border: Border.all(color:Color(0xfffd894f))),child: Center(child: LeftSemicircleFill(color: Colors.yellow, width:4, height:18  )))
+        ],
+      );
+    } else {
+      return Row(
+        children: [
+          Text(
+            "Achieved",
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
+          Spacer(),
+          Container(
+              width: 16,
+              height: 16,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(width: 2, color: Colors.white)),
+              child: Icon(Icons.done, color: Color(0xfffd894f),size: 12,))
+          // Container(width:14,height:14,padding:EdgeInsets.symmetric(horizontal: 4,vertical: 2),decoration:BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(50),border: Border.all(color:Color(0xfffd894f))),child: Center(child: LeftSemicircleFill(color: Colors.yellow, width:4, height:18  )))
+        ],
+      );
+    }
+  }
+}
+
 class CompletionPhaseRadio extends StatelessWidget {
-  const CompletionPhaseRadio({Key? key, required this.radioCompletionPhase, required this.milestone}) : super(key: key);
+  const CompletionPhaseRadio(
+      {Key? key, required this.radioCompletionPhase, required this.milestone})
+      : super(key: key);
   final int radioCompletionPhase;
   final Milestone milestone;
-  static const phases=["Not started","Making progress","Achieved"];
+  static const phases = ["Not started", "Making progress", "Achieved"];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(children: [
-        SizedBox(width: 8,),
-        Text(phases[radioCompletionPhase],style:TextStyle(
-            color: Colors.blueGrey[900],
-            fontWeight: FontWeight.w600)),
-        Spacer(),
-        Transform.scale(
-          scale: 0.8,
-          child: Radio<String>(
-            activeColor: Color(0xfffd894f),
-            value: phases[radioCompletionPhase],
-            groupValue: phases[milestone.completionPhaseIndex],
-            onChanged: (String? value) {
-              if(value!=null){
-                print("radiod");
-                milestone.completionPhaseIndex=phases.indexWhere((phase) => phase==value,0);
-                print(milestone.completionPhaseIndex);
-                  context.read<MilestoneActorCubit>().changeCompletionPhase(milestone);
-                Navigator.pop(context);
-              }
-            },
+      child: Row(
+        children: [
+          SizedBox(
+            width: 8,
           ),
-        ),
-      ],),
+          Text(phases[radioCompletionPhase],
+              style: TextStyle(
+                  color: Colors.blueGrey[900], fontWeight: FontWeight.w600)),
+          Spacer(),
+          Transform.scale(
+            scale: 0.8,
+            child: Radio<String>(
+              activeColor: Color(0xfffd894f),
+              value: phases[radioCompletionPhase],
+              groupValue: phases[milestone.completionPhaseIndex],
+              onChanged: (String? value) {
+                if (value != null) {
+                  milestone.completionPhaseIndex =
+                      phases.indexWhere((phase) => phase == value, 0);
+                  context
+                      .read<MilestoneActorCubit>()
+                      .changeCompletionPhase(milestone);
+                  Navigator.pop(context);
+                }
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
-

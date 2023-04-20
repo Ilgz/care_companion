@@ -13,7 +13,6 @@ class ArticleCard extends StatelessWidget {
     final String formattedDate = DateFormat('d MMMM yyyy').format(article.date);
     return  InkWell(
       onTap: (){
-        print("goTo");
         goToArticlePage(context,article);
       },
       child: Container(

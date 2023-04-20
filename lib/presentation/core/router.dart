@@ -50,7 +50,6 @@ final goRouter = GoRouter(
                   parentNavigatorKey: _rootNavigatorKey,
                   redirect: (context, state) {
                     if (state.extra == null) {
-                        print("extra null");
                       return PageRoutes.articleOverviewPage;
                     }
                     return null;

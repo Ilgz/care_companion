@@ -41,7 +41,9 @@ class AppWidget extends StatelessWidget {
         ),
       ],
       child: Builder(builder: (context) {
-        return BlocListener<FavArticleActorCubit, FavArticleActorState>(
+        return MultiBlocListener(
+  listeners: [
+    BlocListener<FavArticleActorCubit, FavArticleActorState>(
           listenWhen: (p, c) {
             return true;
           },
@@ -63,7 +65,20 @@ class AppWidget extends StatelessWidget {
                 loadInProgress: (_) {
                 });
           },
-          child: AnnotatedRegion<SystemUiOverlayStyle>(
+),
+    BlocListener<MilestoneActorCubit, MilestoneActorState>(
+      listener: (context, state) {
+        state.map(                initial: (_) {},
+            loadInProgress: (_) {
+            },changeMilestoneCompletionPhaseSuccess: (state){
+              context.read<MilestoneWatcherCubit>().getMilestones();
+            }, changeMilestoneCompletionPhaseFailure: (state){
+              //TODO notify user about changeMilestoneCompletionPhaseFailure
+            });
+      },
+    ),
+  ],
+  child: AnnotatedRegion<SystemUiOverlayStyle>(
             value:  SystemUiOverlayStyle(
               statusBarIconBrightness: Brightness.dark,
               statusBarColor: Colors.grey[50]!, // set your desired status bar color here
@@ -74,7 +89,7 @@ class AppWidget extends StatelessWidget {
               debugShowCheckedModeBanner: false,
             ),
           ),
-        );
+);
       }),
     );
   }
