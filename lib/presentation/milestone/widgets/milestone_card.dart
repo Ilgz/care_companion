@@ -172,7 +172,7 @@ class MilestoneCard extends StatelessWidget {
                           : null,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                          color: Color(0xfffd894f).withOpacity(0.5))),
+                          color: milestone.completionPhaseIndex==2?Colors.transparent:Color(0xfffd894f).withOpacity(0.5))),
                   child: CompletionPhaseButton(
                     milestone: milestone,
                   )),
@@ -288,36 +288,48 @@ class CompletionPhaseRadio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 8,
-          ),
-          Text(phases[radioCompletionPhase],
-              style: TextStyle(
-                  color: Colors.blueGrey[900], fontWeight: FontWeight.w600)),
-          Spacer(),
-          Transform.scale(
-            scale: 0.8,
-            child: Radio<String>(
-              activeColor: Color(0xfffd894f),
-              value: phases[radioCompletionPhase],
-              groupValue: phases[milestone.completionPhaseIndex],
-              onChanged: (String? value) {
-                if (value != null) {
-                  milestone.completionPhaseIndex =
-                      phases.indexWhere((phase) => phase == value, 0);
-                  context
-                      .read<MilestoneActorCubit>()
-                      .changeCompletionPhase(milestone);
-                  Navigator.pop(context);
-                }
-              },
+    return InkWell(
+      highlightColor: Color(0xfffd894f).withOpacity(0.2),
+      onTap: (){
+          milestone.completionPhaseIndex =
+              phases.indexWhere((phase) => phase == phases[radioCompletionPhase], 0);
+          context
+              .read<MilestoneActorCubit>()
+              .changeCompletionPhase(milestone);
+          Navigator.pop(context);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          children: [
+            SizedBox(
+              width: 8,
             ),
-          ),
-        ],
+            Text(phases[radioCompletionPhase],
+                style: TextStyle(
+                    color: Colors.blueGrey[900], fontWeight: FontWeight.w600)),
+            Spacer(),
+            Transform.scale(
+              scale: 0.8,
+              child: Radio<String>(
+
+                activeColor: Color(0xfffd894f),
+                value: phases[radioCompletionPhase],
+                groupValue: phases[milestone.completionPhaseIndex],
+                onChanged: (String? value) {
+                  if (value != null) {
+                    milestone.completionPhaseIndex =
+                        phases.indexWhere((phase) => phase == value, 0);
+                    context
+                        .read<MilestoneActorCubit>()
+                        .changeCompletionPhase(milestone);
+                    Navigator.pop(context);
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
