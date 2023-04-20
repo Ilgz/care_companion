@@ -189,8 +189,13 @@ class ArticleSearchPage extends StatelessWidget {
                                   shrinkWrap: true,
                                   itemCount: searchHistoryList.length,
                                   itemBuilder: (context, index) {
+                                    //return Container(margin:EdgeInsets.only(bottom: 8),width: double.infinity,height: 10,color: Colors.red,);
                                     return TextButton(
+
                                         style: TextButton.styleFrom(
+
+                                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                          padding: EdgeInsets.all(0),
                                             alignment: Alignment.centerLeft),
                                         onPressed: () {
                                           controller.text =
