@@ -15,7 +15,6 @@ class TrackerActorCubit extends Cubit<TrackerActorState> {
 
   TrackerActorCubit(this._trackerRepository)
       : super(const TrackerActorState.initial());
-
   createTracker(Tracker tracker) async {
     emit(const TrackerActorState.loadInProgress());
     final failureOrSuccess = await _trackerRepository.createTracker(tracker);

@@ -19,12 +19,15 @@ abstract class TrackerDto implements _$TrackerDto {
   }) = _TrackerDto;
 
   factory TrackerDto.fromDomain(Tracker tracker) => TrackerDto(
-      height: tracker.height.getOrCrash(),
-      weight: tracker.weight.getOrCrash(),
-      date: tracker.date);
+        height: tracker.height.getOrCrash(),
+        weight: tracker.weight.getOrCrash(),
+        date: tracker.date,
+      );
 
   Tracker toDomain() {
     return Tracker(
-        height: Measurement(height), weight: Measurement(weight), date: date);
+        height: Measurement(height),
+        weight: Measurement(weight),
+        date: date);
   }
 }

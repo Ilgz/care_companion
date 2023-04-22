@@ -4,22 +4,21 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tracker.freezed.dart';
-
 @freezed
 abstract class Tracker implements _$Tracker {
   Tracker._();
-
   factory Tracker({
     required DateTime date,
     required Measurement height,
     required Measurement weight,
-  }) = _Tracker;
+}) = _Tracker;
 
   factory Tracker.empty() {
     return Tracker(
         height: Measurement(0),
         weight: Measurement(0),
-        date: DateTime.now());
+        date: DateTime.now(),
+    );
   }
 
   Option<ValueFailure<dynamic>> get failureOption {

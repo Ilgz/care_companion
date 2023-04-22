@@ -8,11 +8,11 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class TrackerPage extends StatelessWidget {
   TrackerPage({Key? key}) : super(key: key);
   final List<Tracker> trackerDataList = [
-    Tracker(date: DateTime(2023, 1, 1), height: Measurement(50), weight: Measurement(3.5)),
-    Tracker(date: DateTime(2023, 2, 1), height: Measurement(70), weight: Measurement(5.5)),
-    Tracker(date: DateTime(2023, 3, 1), height: Measurement(80), weight: Measurement(5.5)),
-    Tracker(date: DateTime(2023, 4, 1), height: Measurement(60), weight: Measurement(5.9)),
-    Tracker(date: DateTime(2023, 5, 1), height: Measurement(90), weight: Measurement(5.9)),
+    // Tracker(date: DateTime(2023, 1, 1), height: Measurement(50), weight: Measurement(3.5)),
+    // Tracker(date: DateTime(2023, 2, 1), height: Measurement(70), weight: Measurement(5.5)),
+    // Tracker(date: DateTime(2023, 3, 1), height: Measurement(80), weight: Measurement(5.5)),
+    // Tracker(date: DateTime(2023, 4, 1), height: Measurement(60), weight: Measurement(5.9)),
+    // Tracker(date: DateTime(2023, 5, 1), height: Measurement(90), weight: Measurement(5.9)),
   ];
 
   @override
