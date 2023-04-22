@@ -1,6 +1,7 @@
 import 'package:cash_manager/presentation/article/article_overview_page.dart';
 import 'package:cash_manager/presentation/core/constants.dart';
 import 'package:cash_manager/presentation/milestone/milestone_overview_page.dart';
+import 'package:cash_manager/presentation/tracker/tracker_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,8 +34,8 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
 
   final List<Widget> _mainContents = [
     const ArticleOverviewPage(),
-     MilestoneOverviewPage(),
-
+    const MilestoneOverviewPage(),
+    TrackerPage()
   ];
 
   @override
@@ -69,6 +70,9 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
                     NavigationRailDestination(
                         icon: Icon(Icons.flag_outlined),
                         label: Text("Milestones")),
+                    NavigationRailDestination(
+                        icon: Icon(Icons.bar_chart),
+                        label: Text("Growth")),
                   ],
                 )
               ],
@@ -119,5 +123,10 @@ const tabs = [
     initialLocation: PageRoutes.milestoneOverviewPage,
     icon: Icon(Icons.flag_outlined),
     label: 'Milestones',
+  ),
+  ScaffoldWithNavBarTabItem(
+    initialLocation: PageRoutes.trackerPage,
+    icon: Icon(Icons.bar_chart),
+    label: 'Growth',
   ),
 ];

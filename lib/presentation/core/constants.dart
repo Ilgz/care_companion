@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class PageRoutes {
   static const articleOverviewPage = "/articleOverview";
   static const milestoneOverviewPage = "/milestoneOverview";
+  static const trackerPage = "/trackerPage";
   static const articlePage = "articlePage";
   static const introPage = "/intro";
   static const searchPage = "search";
@@ -25,11 +26,11 @@ class AppConstants {
 List<IntroItem> introItems = [
   IntroItem(
       "Simplify your childcare routine",
-      "With our app, you can keep track of your child's schedule, receive personalized advice, and much more.",
+      "With our app, you can keep track of your child's schedule, milestones, and much more.",
       "1"),
   IntroItem(
       "Get customized recommendations for your child",
-      "Our app provides you with personalized advice based on your child's age, preferences, and needs.",
+      "Our app provides you with personalized articles based on your child's age, preferences, and needs.",
       "2"),
   IntroItem(
       "Play and learn with your child",

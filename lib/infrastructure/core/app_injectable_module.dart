@@ -1,4 +1,5 @@
 import 'package:cash_manager/domain/milestone/milestone.dart';
+import 'package:cash_manager/infrastructure/tracker/tracker_dto.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
@@ -20,4 +21,8 @@ abstract class AppInjectableProdModule {
   @Named("milestoneBox")
   Future<Box<Milestone>> get milestoneBox =>
       Hive.openBox("milestone");
+  @preResolve
+  @Named("trackerBox")
+  Future<Box<TrackerDto>> get trackerBox =>
+      Hive.openBox("tracker");
 }

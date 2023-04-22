@@ -51,7 +51,7 @@ class ArticleCard extends StatelessWidget {
                             }
                           },
                           child: Icon(article.isFav?Icons.bookmark:Icons.bookmark_border_outlined,
-                            size: 18,
+                            size: 20,
                             color:article.isFav?Color(0xfffd894f):Colors.grey,
                           ),
                         )
