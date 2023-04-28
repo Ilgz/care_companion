@@ -1,16 +1,25 @@
-# care_companion
+# Care Companion
 
-A new Flutter project.
+The mobile application written in Flutter.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+<table>
+  <tr>
+    <td><img src="./assets/github/article.png" width="200"></td>
+    <td><img src="./assets/github/article_read.png" width="200"></td>
+    <td><img src="./assets/github/bookmarked.png" width="200"></td>
 
-A few resources to get you started if this is your first Flutter project:
+  </tr>
+ <tr>
+    <td><img src="./assets/github/growth_1.png" width="200"></td>
+    <td><img src="./assets/github/growth_2.png" width="200"></td>
+    <td><img src="./assets/github/growth_add.png" width="200"></td>
+  </tr>
+  <tr>
+      <td><img src="./assets/github/search_suggestion.png" width="200"></td>
+    <td><img src="./assets/github/milestone.png" width="200"></td>
+    <td><img src="./assets/github/milestone_set.png" width="200"></td>
+  </tr>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</table>

@@ -1,6 +1,7 @@
 import 'package:cash_manager/domain/milestone/i_milestone_repository.dart';
 import 'package:cash_manager/domain/milestone/milestone.dart';
 import 'package:cash_manager/domain/milestone/milestone_failure.dart';
+import 'package:cash_manager/domain/milestone/value_objects.dart';
 import 'package:cash_manager/domain/tracker/i_tracker_repository.dart';
 import 'package:cash_manager/domain/tracker/tracker.dart';
 import 'package:cash_manager/domain/tracker/tracker_failure.dart';
@@ -22,11 +23,16 @@ class TrackerRepository implements ITrackerRepository {
 
   @override
   Future<Either<TrackerFailure, List<Tracker>>> getTrackers() async {
-    final trackers = _trackerBox.values
-        .toList()
-        .map((tracker) => tracker.toDomain())
-        .toList();
-    return right(trackers);
+    return right([  Tracker(date: DateTime(2023, 1, 1), height: Measurement(50), weight: Measurement(3.5)),
+      Tracker(date: DateTime(2023, 2, 1), height: Measurement(70), weight: Measurement(15.5)),
+      Tracker(date: DateTime(2023, 2, 3), height: Measurement(80), weight: Measurement(19.1)),
+      Tracker(date: DateTime(2023, 4, 1), height: Measurement(60), weight: Measurement(18.9)),
+      Tracker(date: DateTime(2023, 5, 1), height: Measurement(90), weight: Measurement(20.5)),]);
+    // final trackers = _trackerBox.values
+    //     .toList()
+    //     .map((tracker) => tracker.toDomain())
+    //     .toList();
+    // return right(trackers);
   }
 
   @override

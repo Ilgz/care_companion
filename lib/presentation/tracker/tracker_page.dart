@@ -15,6 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TrackerPage extends StatelessWidget {
   TrackerPage({Key? key}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -245,7 +247,7 @@ class HeightValuePicker extends StatelessWidget {
             useMagnifier: false,
             selectionOverlay: Container(
               margin: EdgeInsets.symmetric(vertical: 4),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   border: Border.symmetric(
                       horizontal: BorderSide(color: Colors.grey, width: 0.2))),
             ),
