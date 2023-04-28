@@ -15,8 +15,8 @@ class UnitPreferenceActorCubit extends Cubit<UnitPreferenceActorState> {
 
   UnitPreferenceActorCubit(this._trackerRepository)
       : super(const UnitPreferenceActorState.initial());
-
   Future<void> saveUnitPreference(UnitPreference unitPreference) async {
+    emit(const UnitPreferenceActorState.loadInProgress());
     final saveResult =
         await _trackerRepository.saveUnitPreference(unitPreference);
     saveResult.fold(

@@ -10,25 +10,29 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cash_manager/application/article/article_searcher/article_searcher_cubit.dart'
-    as _i20;
-import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart'
-    as _i23;
-import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart'
     as _i21;
-import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart'
+import 'package:cash_manager/application/article/article_watcher/article_watcher_cubit.dart'
+    as _i25;
+import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart'
     as _i22;
+import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart'
+    as _i23;
 import 'package:cash_manager/application/milestone/milestone_actor/milestone_actor_cubit.dart'
     as _i14;
 import 'package:cash_manager/application/milestone/milestone_filter/milestone_filter_cubit.dart'
     as _i15;
 import 'package:cash_manager/application/milestone/milestone_watcher/milestone_watcher_cubit.dart'
     as _i16;
-import 'package:cash_manager/application/tracker/tracker_actor/tracker_actor_cubit.dart'
+import 'package:cash_manager/application/tracker/tracker_form/tracker_form_cubit.dart'
     as _i17;
 import 'package:cash_manager/application/tracker/tracker_watcher/tracker_watcher_cubit.dart'
+    as _i24;
+import 'package:cash_manager/application/tracker/tracker_welcome_set/tracker_welcome_set_cubit.dart'
     as _i18;
 import 'package:cash_manager/application/tracker/unit_preference_actor/unit_preference_actor_cubit.dart'
     as _i19;
+import 'package:cash_manager/application/tracker/unit_preference_watcher/unit_preference_watcher_cubit.dart'
+    as _i20;
 import 'package:cash_manager/domain/article/i_article_repository.dart' as _i8;
 import 'package:cash_manager/domain/milestone/i_milestone_repository.dart'
     as _i10;
@@ -38,7 +42,7 @@ import 'package:cash_manager/domain/tracker/unit_preference.dart' as _i6;
 import 'package:cash_manager/infrastructure/article/article_repository.dart'
     as _i9;
 import 'package:cash_manager/infrastructure/core/app_injectable_module.dart'
-    as _i24;
+    as _i26;
 import 'package:cash_manager/infrastructure/milestone/milestone_repository.dart'
     as _i11;
 import 'package:cash_manager/infrastructure/tracker/tracker_dto.dart' as _i5;
@@ -102,24 +106,30 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i15.MilestoneFilterCubit>(() => _i15.MilestoneFilterCubit());
     gh.singleton<_i16.MilestoneWatcherCubit>(
         _i16.MilestoneWatcherCubit(gh<_i10.IMilestoneRepository>()));
-    gh.factory<_i17.TrackerActorCubit>(
-        () => _i17.TrackerActorCubit(gh<_i12.ITrackerRepository>()));
-    gh.factory<_i18.TrackerWatcherCubit>(
-        () => _i18.TrackerWatcherCubit(gh<_i12.ITrackerRepository>()));
+    gh.factory<_i17.TrackerFormCubit>(
+        () => _i17.TrackerFormCubit(gh<_i12.ITrackerRepository>()));
+    gh.factory<_i18.TrackerWelcomeSetCubit>(
+        () => _i18.TrackerWelcomeSetCubit());
     gh.factory<_i19.UnitPreferenceActorCubit>(
         () => _i19.UnitPreferenceActorCubit(gh<_i12.ITrackerRepository>()));
-    gh.factory<_i20.ArticleSearcherCubit>(
-        () => _i20.ArticleSearcherCubit(gh<_i8.IArticleRepository>()));
-    gh.singleton<_i21.FavArticleActorCubit>(
-        _i21.FavArticleActorCubit(gh<_i8.IArticleRepository>()));
-    gh.singleton<_i22.FavArticleCubit>(
-        _i22.FavArticleCubit(gh<_i8.IArticleRepository>()));
-    gh.factory<_i23.ArticleWatcherCubit>(() => _i23.ArticleWatcherCubit(
+    gh.singleton<_i20.UnitPreferenceWatcherCubit>(
+        _i20.UnitPreferenceWatcherCubit(gh<_i12.ITrackerRepository>()));
+    gh.factory<_i21.ArticleSearcherCubit>(
+        () => _i21.ArticleSearcherCubit(gh<_i8.IArticleRepository>()));
+    gh.singleton<_i22.FavArticleActorCubit>(
+        _i22.FavArticleActorCubit(gh<_i8.IArticleRepository>()));
+    gh.singleton<_i23.FavArticleCubit>(
+        _i23.FavArticleCubit(gh<_i8.IArticleRepository>()));
+    gh.factory<_i24.TrackerWatcherCubit>(() => _i24.TrackerWatcherCubit(
+          gh<_i12.ITrackerRepository>(),
+          gh<_i20.UnitPreferenceWatcherCubit>(),
+        ));
+    gh.factory<_i25.ArticleWatcherCubit>(() => _i25.ArticleWatcherCubit(
           gh<_i8.IArticleRepository>(),
-          gh<_i22.FavArticleCubit>(),
+          gh<_i23.FavArticleCubit>(),
         ));
     return this;
   }
 }
 
-class _$AppInjectableProdModule extends _i24.AppInjectableProdModule {}
+class _$AppInjectableProdModule extends _i26.AppInjectableProdModule {}

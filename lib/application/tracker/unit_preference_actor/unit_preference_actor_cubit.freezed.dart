@@ -19,6 +19,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() saveUnitPreferenceSuccess,
     required TResult Function(TrackerFailure failure) saveUnitPreferenceFail,
   }) =>
@@ -26,6 +27,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? saveUnitPreferenceSuccess,
     TResult? Function(TrackerFailure failure)? saveUnitPreferenceFail,
   }) =>
@@ -33,6 +35,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? saveUnitPreferenceSuccess,
     TResult Function(TrackerFailure failure)? saveUnitPreferenceFail,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_SaveUnitPreferenceSuccess value)
         saveUnitPreferenceSuccess,
     required TResult Function(_SaveUnitPreferenceFail value)
@@ -50,6 +54,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult? Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -58,6 +63,7 @@ mixin _$UnitPreferenceActorState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -123,6 +129,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() saveUnitPreferenceSuccess,
     required TResult Function(TrackerFailure failure) saveUnitPreferenceFail,
   }) {
@@ -133,6 +140,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? saveUnitPreferenceSuccess,
     TResult? Function(TrackerFailure failure)? saveUnitPreferenceFail,
   }) {
@@ -143,6 +151,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? saveUnitPreferenceSuccess,
     TResult Function(TrackerFailure failure)? saveUnitPreferenceFail,
     required TResult orElse(),
@@ -157,6 +166,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_SaveUnitPreferenceSuccess value)
         saveUnitPreferenceSuccess,
     required TResult Function(_SaveUnitPreferenceFail value)
@@ -169,6 +179,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult? Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -180,6 +191,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -194,6 +206,124 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements UnitPreferenceActorState {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_LoadInProgressCopyWith<$Res> {
+  factory _$$_LoadInProgressCopyWith(
+          _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
+      __$$_LoadInProgressCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_LoadInProgressCopyWithImpl<$Res>
+    extends _$UnitPreferenceActorStateCopyWithImpl<$Res, _$_LoadInProgress>
+    implements _$$_LoadInProgressCopyWith<$Res> {
+  __$$_LoadInProgressCopyWithImpl(
+      _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_LoadInProgress implements _LoadInProgress {
+  const _$_LoadInProgress();
+
+  @override
+  String toString() {
+    return 'UnitPreferenceActorState.loadInProgress()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_LoadInProgress);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function() saveUnitPreferenceSuccess,
+    required TResult Function(TrackerFailure failure) saveUnitPreferenceFail,
+  }) {
+    return loadInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function()? saveUnitPreferenceSuccess,
+    TResult? Function(TrackerFailure failure)? saveUnitPreferenceFail,
+  }) {
+    return loadInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function()? saveUnitPreferenceSuccess,
+    TResult Function(TrackerFailure failure)? saveUnitPreferenceFail,
+    required TResult orElse(),
+  }) {
+    if (loadInProgress != null) {
+      return loadInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_SaveUnitPreferenceSuccess value)
+        saveUnitPreferenceSuccess,
+    required TResult Function(_SaveUnitPreferenceFail value)
+        saveUnitPreferenceFail,
+  }) {
+    return loadInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_SaveUnitPreferenceSuccess value)?
+        saveUnitPreferenceSuccess,
+    TResult? Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
+  }) {
+    return loadInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_SaveUnitPreferenceSuccess value)?
+        saveUnitPreferenceSuccess,
+    TResult Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
+    required TResult orElse(),
+  }) {
+    if (loadInProgress != null) {
+      return loadInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadInProgress implements UnitPreferenceActorState {
+  const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
 /// @nodoc
@@ -239,6 +369,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() saveUnitPreferenceSuccess,
     required TResult Function(TrackerFailure failure) saveUnitPreferenceFail,
   }) {
@@ -249,6 +380,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? saveUnitPreferenceSuccess,
     TResult? Function(TrackerFailure failure)? saveUnitPreferenceFail,
   }) {
@@ -259,6 +391,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? saveUnitPreferenceSuccess,
     TResult Function(TrackerFailure failure)? saveUnitPreferenceFail,
     required TResult orElse(),
@@ -273,6 +406,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_SaveUnitPreferenceSuccess value)
         saveUnitPreferenceSuccess,
     required TResult Function(_SaveUnitPreferenceFail value)
@@ -285,6 +419,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult? Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -296,6 +431,7 @@ class _$_SaveUnitPreferenceSuccess implements _SaveUnitPreferenceSuccess {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -389,6 +525,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loadInProgress,
     required TResult Function() saveUnitPreferenceSuccess,
     required TResult Function(TrackerFailure failure) saveUnitPreferenceFail,
   }) {
@@ -399,6 +536,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
     TResult? Function()? saveUnitPreferenceSuccess,
     TResult? Function(TrackerFailure failure)? saveUnitPreferenceFail,
   }) {
@@ -409,6 +547,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loadInProgress,
     TResult Function()? saveUnitPreferenceSuccess,
     TResult Function(TrackerFailure failure)? saveUnitPreferenceFail,
     required TResult orElse(),
@@ -423,6 +562,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_SaveUnitPreferenceSuccess value)
         saveUnitPreferenceSuccess,
     required TResult Function(_SaveUnitPreferenceFail value)
@@ -435,6 +575,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult? Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,
@@ -446,6 +587,7 @@ class _$_SaveUnitPreferenceFail implements _SaveUnitPreferenceFail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_SaveUnitPreferenceSuccess value)?
         saveUnitPreferenceSuccess,
     TResult Function(_SaveUnitPreferenceFail value)? saveUnitPreferenceFail,

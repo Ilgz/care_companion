@@ -1,5 +1,6 @@
 import 'package:cash_manager/domain/milestone/milestone.dart';
 import 'package:cash_manager/domain/tracker/unit_preference.dart';
+import 'package:cash_manager/infrastructure/tracker/tracker_dto.dart';
 import 'package:cash_manager/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,9 @@ void main() async{
   await Hive.initFlutter();
   Hive.registerAdapter(MilestoneAdapter());
   Hive.registerAdapter(UnitPreferenceAdapter());
+  Hive.registerAdapter(TrackerDtoAdapter());
+  Hive.registerAdapter(HeightUnitAdapter());
+  Hive.registerAdapter(WeightUnitAdapter());
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection(Environment.prod);
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

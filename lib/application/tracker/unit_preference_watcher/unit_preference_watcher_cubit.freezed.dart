@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tracker_actor_cubit.dart';
+part of 'unit_preference_watcher_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TrackerActorState {
+mixin _$UnitPreferenceWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function() createTrackerSuccess,
-    required TResult Function(TrackerFailure failureException)
-        createTrackerFailure,
+    required TResult Function(UnitPreference unitPreference) loadSuccess,
+    required TResult Function(TrackerFailure articleFailure) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function()? createTrackerSuccess,
-    TResult? Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult? Function(UnitPreference unitPreference)? loadSuccess,
+    TResult? Function(TrackerFailure articleFailure)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function()? createTrackerSuccess,
-    TResult Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult Function(UnitPreference unitPreference)? loadSuccess,
+    TResult Function(TrackerFailure articleFailure)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,40 +45,42 @@ mixin _$TrackerActorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_CreateTrackerSuccess value) createTrackerSuccess,
-    required TResult Function(_CreateTrackerFailure value) createTrackerFailure,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult? Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrackerActorStateCopyWith<$Res> {
-  factory $TrackerActorStateCopyWith(
-          TrackerActorState value, $Res Function(TrackerActorState) then) =
-      _$TrackerActorStateCopyWithImpl<$Res, TrackerActorState>;
+abstract class $UnitPreferenceWatcherStateCopyWith<$Res> {
+  factory $UnitPreferenceWatcherStateCopyWith(UnitPreferenceWatcherState value,
+          $Res Function(UnitPreferenceWatcherState) then) =
+      _$UnitPreferenceWatcherStateCopyWithImpl<$Res,
+          UnitPreferenceWatcherState>;
 }
 
 /// @nodoc
-class _$TrackerActorStateCopyWithImpl<$Res, $Val extends TrackerActorState>
-    implements $TrackerActorStateCopyWith<$Res> {
-  _$TrackerActorStateCopyWithImpl(this._value, this._then);
+class _$UnitPreferenceWatcherStateCopyWithImpl<$Res,
+        $Val extends UnitPreferenceWatcherState>
+    implements $UnitPreferenceWatcherStateCopyWith<$Res> {
+  _$UnitPreferenceWatcherStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -96,7 +97,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$TrackerActorStateCopyWithImpl<$Res, _$_Initial>
+    extends _$UnitPreferenceWatcherStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -109,7 +110,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'TrackerActorState.initial()';
+    return 'UnitPreferenceWatcherState.initial()';
   }
 
   @override
@@ -126,9 +127,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function() createTrackerSuccess,
-    required TResult Function(TrackerFailure failureException)
-        createTrackerFailure,
+    required TResult Function(UnitPreference unitPreference) loadSuccess,
+    required TResult Function(TrackerFailure articleFailure) loadFailure,
   }) {
     return initial();
   }
@@ -138,8 +138,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function()? createTrackerSuccess,
-    TResult? Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult? Function(UnitPreference unitPreference)? loadSuccess,
+    TResult? Function(TrackerFailure articleFailure)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -149,8 +149,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function()? createTrackerSuccess,
-    TResult Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult Function(UnitPreference unitPreference)? loadSuccess,
+    TResult Function(TrackerFailure articleFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,8 +164,8 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_CreateTrackerSuccess value) createTrackerSuccess,
-    required TResult Function(_CreateTrackerFailure value) createTrackerFailure,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return initial(this);
   }
@@ -175,8 +175,8 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult? Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return initial?.call(this);
   }
@@ -186,8 +186,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -197,7 +197,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements TrackerActorState {
+abstract class _Initial implements UnitPreferenceWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -210,7 +210,7 @@ abstract class _$$_LoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$TrackerActorStateCopyWithImpl<$Res, _$_LoadInProgress>
+    extends _$UnitPreferenceWatcherStateCopyWithImpl<$Res, _$_LoadInProgress>
     implements _$$_LoadInProgressCopyWith<$Res> {
   __$$_LoadInProgressCopyWithImpl(
       _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
@@ -224,7 +224,7 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   String toString() {
-    return 'TrackerActorState.loadInProgress()';
+    return 'UnitPreferenceWatcherState.loadInProgress()';
   }
 
   @override
@@ -241,9 +241,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function() createTrackerSuccess,
-    required TResult Function(TrackerFailure failureException)
-        createTrackerFailure,
+    required TResult Function(UnitPreference unitPreference) loadSuccess,
+    required TResult Function(TrackerFailure articleFailure) loadFailure,
   }) {
     return loadInProgress();
   }
@@ -253,8 +252,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function()? createTrackerSuccess,
-    TResult? Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult? Function(UnitPreference unitPreference)? loadSuccess,
+    TResult? Function(TrackerFailure articleFailure)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -264,8 +263,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function()? createTrackerSuccess,
-    TResult Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult Function(UnitPreference unitPreference)? loadSuccess,
+    TResult Function(TrackerFailure articleFailure)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -279,8 +278,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_CreateTrackerSuccess value) createTrackerSuccess,
-    required TResult Function(_CreateTrackerFailure value) createTrackerFailure,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
     return loadInProgress(this);
   }
@@ -290,8 +289,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult? Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
     return loadInProgress?.call(this);
   }
@@ -301,8 +300,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -312,208 +311,81 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 }
 
-abstract class _LoadInProgress implements TrackerActorState {
+abstract class _LoadInProgress implements UnitPreferenceWatcherState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
 /// @nodoc
-abstract class _$$_CreateTrackerSuccessCopyWith<$Res> {
-  factory _$$_CreateTrackerSuccessCopyWith(_$_CreateTrackerSuccess value,
-          $Res Function(_$_CreateTrackerSuccess) then) =
-      __$$_CreateTrackerSuccessCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_CreateTrackerSuccessCopyWithImpl<$Res>
-    extends _$TrackerActorStateCopyWithImpl<$Res, _$_CreateTrackerSuccess>
-    implements _$$_CreateTrackerSuccessCopyWith<$Res> {
-  __$$_CreateTrackerSuccessCopyWithImpl(_$_CreateTrackerSuccess _value,
-      $Res Function(_$_CreateTrackerSuccess) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_CreateTrackerSuccess implements _CreateTrackerSuccess {
-  const _$_CreateTrackerSuccess();
-
-  @override
-  String toString() {
-    return 'TrackerActorState.createTrackerSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CreateTrackerSuccess);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function() createTrackerSuccess,
-    required TResult Function(TrackerFailure failureException)
-        createTrackerFailure,
-  }) {
-    return createTrackerSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loadInProgress,
-    TResult? Function()? createTrackerSuccess,
-    TResult? Function(TrackerFailure failureException)? createTrackerFailure,
-  }) {
-    return createTrackerSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function()? createTrackerSuccess,
-    TResult Function(TrackerFailure failureException)? createTrackerFailure,
-    required TResult orElse(),
-  }) {
-    if (createTrackerSuccess != null) {
-      return createTrackerSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_CreateTrackerSuccess value) createTrackerSuccess,
-    required TResult Function(_CreateTrackerFailure value) createTrackerFailure,
-  }) {
-    return createTrackerSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult? Function(_CreateTrackerFailure value)? createTrackerFailure,
-  }) {
-    return createTrackerSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult Function(_CreateTrackerFailure value)? createTrackerFailure,
-    required TResult orElse(),
-  }) {
-    if (createTrackerSuccess != null) {
-      return createTrackerSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CreateTrackerSuccess implements TrackerActorState {
-  const factory _CreateTrackerSuccess() = _$_CreateTrackerSuccess;
-}
-
-/// @nodoc
-abstract class _$$_CreateTrackerFailureCopyWith<$Res> {
-  factory _$$_CreateTrackerFailureCopyWith(_$_CreateTrackerFailure value,
-          $Res Function(_$_CreateTrackerFailure) then) =
-      __$$_CreateTrackerFailureCopyWithImpl<$Res>;
+abstract class _$$_LoadSuccessCopyWith<$Res> {
+  factory _$$_LoadSuccessCopyWith(
+          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
+      __$$_LoadSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({TrackerFailure failureException});
-
-  $TrackerFailureCopyWith<$Res> get failureException;
+  $Res call({UnitPreference unitPreference});
 }
 
 /// @nodoc
-class __$$_CreateTrackerFailureCopyWithImpl<$Res>
-    extends _$TrackerActorStateCopyWithImpl<$Res, _$_CreateTrackerFailure>
-    implements _$$_CreateTrackerFailureCopyWith<$Res> {
-  __$$_CreateTrackerFailureCopyWithImpl(_$_CreateTrackerFailure _value,
-      $Res Function(_$_CreateTrackerFailure) _then)
+class __$$_LoadSuccessCopyWithImpl<$Res>
+    extends _$UnitPreferenceWatcherStateCopyWithImpl<$Res, _$_LoadSuccess>
+    implements _$$_LoadSuccessCopyWith<$Res> {
+  __$$_LoadSuccessCopyWithImpl(
+      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failureException = null,
+    Object? unitPreference = null,
   }) {
-    return _then(_$_CreateTrackerFailure(
-      null == failureException
-          ? _value.failureException
-          : failureException // ignore: cast_nullable_to_non_nullable
-              as TrackerFailure,
+    return _then(_$_LoadSuccess(
+      null == unitPreference
+          ? _value.unitPreference
+          : unitPreference // ignore: cast_nullable_to_non_nullable
+              as UnitPreference,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TrackerFailureCopyWith<$Res> get failureException {
-    return $TrackerFailureCopyWith<$Res>(_value.failureException, (value) {
-      return _then(_value.copyWith(failureException: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$_CreateTrackerFailure implements _CreateTrackerFailure {
-  const _$_CreateTrackerFailure(this.failureException);
+class _$_LoadSuccess implements _LoadSuccess {
+  const _$_LoadSuccess(this.unitPreference);
 
   @override
-  final TrackerFailure failureException;
+  final UnitPreference unitPreference;
 
   @override
   String toString() {
-    return 'TrackerActorState.createTrackerFailure(failureException: $failureException)';
+    return 'UnitPreferenceWatcherState.loadSuccess(unitPreference: $unitPreference)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateTrackerFailure &&
-            (identical(other.failureException, failureException) ||
-                other.failureException == failureException));
+            other is _$_LoadSuccess &&
+            (identical(other.unitPreference, unitPreference) ||
+                other.unitPreference == unitPreference));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failureException);
+  int get hashCode => Object.hash(runtimeType, unitPreference);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateTrackerFailureCopyWith<_$_CreateTrackerFailure> get copyWith =>
-      __$$_CreateTrackerFailureCopyWithImpl<_$_CreateTrackerFailure>(
-          this, _$identity);
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loadInProgress,
-    required TResult Function() createTrackerSuccess,
-    required TResult Function(TrackerFailure failureException)
-        createTrackerFailure,
+    required TResult Function(UnitPreference unitPreference) loadSuccess,
+    required TResult Function(TrackerFailure articleFailure) loadFailure,
   }) {
-    return createTrackerFailure(failureException);
+    return loadSuccess(unitPreference);
   }
 
   @override
@@ -521,10 +393,10 @@ class _$_CreateTrackerFailure implements _CreateTrackerFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loadInProgress,
-    TResult? Function()? createTrackerSuccess,
-    TResult? Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult? Function(UnitPreference unitPreference)? loadSuccess,
+    TResult? Function(TrackerFailure articleFailure)? loadFailure,
   }) {
-    return createTrackerFailure?.call(failureException);
+    return loadSuccess?.call(unitPreference);
   }
 
   @override
@@ -532,12 +404,12 @@ class _$_CreateTrackerFailure implements _CreateTrackerFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loadInProgress,
-    TResult Function()? createTrackerSuccess,
-    TResult Function(TrackerFailure failureException)? createTrackerFailure,
+    TResult Function(UnitPreference unitPreference)? loadSuccess,
+    TResult Function(TrackerFailure articleFailure)? loadFailure,
     required TResult orElse(),
   }) {
-    if (createTrackerFailure != null) {
-      return createTrackerFailure(failureException);
+    if (loadSuccess != null) {
+      return loadSuccess(unitPreference);
     }
     return orElse();
   }
@@ -547,10 +419,10 @@ class _$_CreateTrackerFailure implements _CreateTrackerFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_CreateTrackerSuccess value) createTrackerSuccess,
-    required TResult Function(_CreateTrackerFailure value) createTrackerFailure,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
   }) {
-    return createTrackerFailure(this);
+    return loadSuccess(this);
   }
 
   @override
@@ -558,10 +430,10 @@ class _$_CreateTrackerFailure implements _CreateTrackerFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_LoadInProgress value)? loadInProgress,
-    TResult? Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult? Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
   }) {
-    return createTrackerFailure?.call(this);
+    return loadSuccess?.call(this);
   }
 
   @override
@@ -569,23 +441,180 @@ class _$_CreateTrackerFailure implements _CreateTrackerFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_CreateTrackerSuccess value)? createTrackerSuccess,
-    TResult Function(_CreateTrackerFailure value)? createTrackerFailure,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
     required TResult orElse(),
   }) {
-    if (createTrackerFailure != null) {
-      return createTrackerFailure(this);
+    if (loadSuccess != null) {
+      return loadSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _CreateTrackerFailure implements TrackerActorState {
-  const factory _CreateTrackerFailure(final TrackerFailure failureException) =
-      _$_CreateTrackerFailure;
+abstract class _LoadSuccess implements UnitPreferenceWatcherState {
+  const factory _LoadSuccess(final UnitPreference unitPreference) =
+      _$_LoadSuccess;
 
-  TrackerFailure get failureException;
+  UnitPreference get unitPreference;
   @JsonKey(ignore: true)
-  _$$_CreateTrackerFailureCopyWith<_$_CreateTrackerFailure> get copyWith =>
+  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LoadFailureCopyWith<$Res> {
+  factory _$$_LoadFailureCopyWith(
+          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
+      __$$_LoadFailureCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TrackerFailure articleFailure});
+
+  $TrackerFailureCopyWith<$Res> get articleFailure;
+}
+
+/// @nodoc
+class __$$_LoadFailureCopyWithImpl<$Res>
+    extends _$UnitPreferenceWatcherStateCopyWithImpl<$Res, _$_LoadFailure>
+    implements _$$_LoadFailureCopyWith<$Res> {
+  __$$_LoadFailureCopyWithImpl(
+      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? articleFailure = null,
+  }) {
+    return _then(_$_LoadFailure(
+      null == articleFailure
+          ? _value.articleFailure
+          : articleFailure // ignore: cast_nullable_to_non_nullable
+              as TrackerFailure,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TrackerFailureCopyWith<$Res> get articleFailure {
+    return $TrackerFailureCopyWith<$Res>(_value.articleFailure, (value) {
+      return _then(_value.copyWith(articleFailure: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_LoadFailure implements _LoadFailure {
+  const _$_LoadFailure(this.articleFailure);
+
+  @override
+  final TrackerFailure articleFailure;
+
+  @override
+  String toString() {
+    return 'UnitPreferenceWatcherState.loadFailure(articleFailure: $articleFailure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadFailure &&
+            (identical(other.articleFailure, articleFailure) ||
+                other.articleFailure == articleFailure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, articleFailure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loadInProgress,
+    required TResult Function(UnitPreference unitPreference) loadSuccess,
+    required TResult Function(TrackerFailure articleFailure) loadFailure,
+  }) {
+    return loadFailure(articleFailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loadInProgress,
+    TResult? Function(UnitPreference unitPreference)? loadSuccess,
+    TResult? Function(TrackerFailure articleFailure)? loadFailure,
+  }) {
+    return loadFailure?.call(articleFailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loadInProgress,
+    TResult Function(UnitPreference unitPreference)? loadSuccess,
+    TResult Function(TrackerFailure articleFailure)? loadFailure,
+    required TResult orElse(),
+  }) {
+    if (loadFailure != null) {
+      return loadFailure(articleFailure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+  }) {
+    return loadFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+  }) {
+    return loadFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    required TResult orElse(),
+  }) {
+    if (loadFailure != null) {
+      return loadFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadFailure implements UnitPreferenceWatcherState {
+  const factory _LoadFailure(final TrackerFailure articleFailure) =
+      _$_LoadFailure;
+
+  TrackerFailure get articleFailure;
+  @JsonKey(ignore: true)
+  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

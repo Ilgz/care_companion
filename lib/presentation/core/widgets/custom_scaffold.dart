@@ -51,6 +51,7 @@ class CustomScaffold extends StatelessWidget {
             padding: padding ?? const EdgeInsets.all(16.0).copyWith(bottom: 0),
             child: isScrolling
                 ? SingleChildScrollView(
+
                     child: body,
                   )
                 : body,
