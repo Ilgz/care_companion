@@ -1,10 +1,15 @@
+import 'package:cash_manager/application/intro/intro_cubit.dart';
 import 'package:cash_manager/domain/intro/intro_item.dart';
 import 'package:cash_manager/presentation/core/constants.dart';
+import 'package:cash_manager/presentation/core/router.dart';
+import 'package:cash_manager/presentation/core/widgets/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
+
   @override
   State<IntroPage> createState() => _IntroPageState();
 }
@@ -14,57 +19,69 @@ class _IntroPageState extends State<IntroPage> {
   final PageController pageController = PageController(initialPage: 0);
   late final List<Widget> _pages =
       List.generate(introItems.length, (index) => introBody(introItems[index]));
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView(
-                  scrollDirection: Axis.horizontal,
-                  onPageChanged: (page) {
-                    setState(() {
-                      _currentPage = page;
-                    });
-                  },
-                  pageSnapping: true,
-                  controller: pageController,
-                  children: _pages),
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: TextButton(
-                  onPressed: () {
-                      pageController.animateToPage(_pages.length-1, duration: const Duration(milliseconds: 500), curve: Curves.bounceInOut);
-                  },
-                  child: Text(
-                    "Skip",
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                )),
-                Expanded(child: _buildDotsIndicator()),
-                Expanded(
-                    child: TextButton(
-                  onPressed: () {
-                    if(_currentPage==_pages.length-1){
-                      //TODO save and go to home page
-                    }else{
-                      pageController.animateToPage(_currentPage+1, duration: const Duration(milliseconds: 500), curve: Curves.bounceInOut);
-                    }
-                  },
-                  child: Text(
-                    "Next",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                )),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-          ],
+    return BlocListener<IntroCubit, IntroState>(
+      listener: (context, state) {
+        if (!state.isFirstTime) {
+          goToArticleOverviewPage(context);
+        }
+      },
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView(
+                    scrollDirection: Axis.horizontal,
+                    onPageChanged: (page) {
+                      setState(() {
+                        _currentPage = page;
+                      });
+                    },
+                    pageSnapping: true,
+                    controller: pageController,
+                    children: _pages),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: TextButton(
+                    onPressed: () {
+                      pageController.animateToPage(_pages.length - 1,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut);
+                    },
+                    child: Text(
+                      "Skip",
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  )),
+                  Expanded(child: _buildDotsIndicator()),
+                  Expanded(
+                      child: TextButton(
+                    onPressed: () {
+                      if (_currentPage == _pages.length - 1) {
+                        context.read<IntroCubit>().setFirstTime(false);
+                      } else {
+                        pageController.animateToPage(_currentPage + 1,
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut);
+                      }
+                    },
+                    child: Text(
+                      _currentPage == _pages.length - 1 ? "Finish" : "Next",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  )),
+                ],
+              ),
+              SizedBox(
+                height: 50,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -136,4 +153,3 @@ class _IntroPageState extends State<IntroPage> {
     );
   }
 }
-

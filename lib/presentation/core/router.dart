@@ -7,6 +7,7 @@ import 'package:cash_manager/presentation/core/constants.dart';
 import 'package:cash_manager/presentation/core/widgets/scaffold_with_bottom.dart';
 import 'package:cash_manager/presentation/intro/intro_page.dart';
 import 'package:cash_manager/presentation/milestone/milestone_overview_page.dart';
+import 'package:cash_manager/presentation/splash/splash_page.dart';
 import 'package:cash_manager/presentation/tracker/tracker_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 final goRouter = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: PageRoutes.articleOverviewPage,
+    initialLocation: "/",
     routes: [
       ShellRoute(
           navigatorKey: _shellNavigatorKey,
@@ -73,14 +74,23 @@ final goRouter = GoRouter(
                 ]),
           ]),
       GoRoute(
+        path: '/',
+        pageBuilder: (context, state) =>  NoTransitionPage(
+          child: SplashPage(),
+        ),
+      ),
+      GoRoute(
         path: PageRoutes.introPage,
         pageBuilder: (context, state) => NoTransitionPage(
           child: IntroPage(),
         ),
       ),
     ]);
+void goToIntroPage(BuildContext context) => context.pushReplacement(
+  PageRoutes.introPage,
+);
 
-void goToSignInPage(BuildContext context) => context.pushReplacement(
+void goToArticleOverviewPage(BuildContext context) => context.push(
       PageRoutes.articleOverviewPage,
     );
 

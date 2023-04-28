@@ -31,4 +31,8 @@ abstract class AppInjectableProdModule {
   @Named("unitPreferenceBox")
   Future<Box<UnitPreference>> get unitPreferenceBox =>
       Hive.openBox("unitPreference");
+  @preResolve
+  @Named("settingBox")
+  Future<Box<bool>> get settingBox =>
+      Hive.openBox("setting");
 }
