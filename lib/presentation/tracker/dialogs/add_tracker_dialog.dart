@@ -8,6 +8,7 @@ import 'package:cash_manager/injection.dart';
 import 'package:cash_manager/presentation/core/utils/unit_converter_util.dart';
 import 'package:cash_manager/presentation/core/utils/unit_helpers.dart';
 import 'package:cash_manager/presentation/tracker/widgets/unit_selection_widget.dart';
+import 'package:dartz/dartz.dart' hide State;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,29 +79,38 @@ class AddTrackerDialog extends StatelessWidget {
                                         child: ValueFormTextField(
                                             onUnitPreferenceChanged:
                                                 (controller, unitPreference) {
+                                              late double convertedWeight;
                                               if (unitPreference.weightUnit ==
                                                   WeightUnit.kilogram) {
-                                                controller
-                                                    .text = poundsToKilograms(
-                                                        double.tryParse(
-                                                                controller
-                                                                    .text) ??
-                                                            0)
-                                                    .formatDecimalValue;
-
+                                                convertedWeight =
+                                                    poundsToKilograms(context
+                                                        .read<
+                                                            TrackerFormCubit>()
+                                                        .state
+                                                        .tracker
+                                                        .weight
+                                                        .value
+                                                        .fold((_) => 0,
+                                                            (state) => state));
                                               } else {
-                                                controller
-                                                    .text = kilogramsToPounds(
-                                                        double.tryParse(
-                                                                controller
-                                                                    .text) ??
-                                                            0)
-                                                    .formatDecimalValue;
-
+                                                convertedWeight =
+                                                    kilogramsToPounds(context
+                                                        .read<
+                                                            TrackerFormCubit>()
+                                                        .state
+                                                        .tracker
+                                                        .weight
+                                                        .value
+                                                        .fold((_) => 0,
+                                                            (state) => state));
                                               }
+                                              controller.text = convertedWeight
+                                                  .formatDecimalValue;
                                               context
                                                   .read<TrackerFormCubit>()
-                                                  .trackerWeightChanged(controller.text);
+                                                  .trackerWeightChanged(
+                                                      convertedWeight
+                                                          .toString());
                                             },
                                             initialValue:
                                                 lastTracker.weight.getOrCrash(),
@@ -137,27 +147,37 @@ class AddTrackerDialog extends StatelessWidget {
                                         child: ValueFormTextField(
                                             onUnitPreferenceChanged:
                                                 (controller, unitPreference) {
+                                              late double convertedHeight;
+
                                               if (unitPreference.heightUnit ==
                                                   HeightUnit.centimeter) {
-                                                controller
-                                                    .text = inchesToCentimeters(
-                                                        double.tryParse(
-                                                                controller
-                                                                    .text) ??
-                                                            0)
-                                                    .formatDecimalValue;
+                                                convertedHeight =
+                                                    inchesToCentimeters(context
+                                                        .read<
+                                                            TrackerFormCubit>()
+                                                        .state
+                                                        .tracker
+                                                        .height
+                                                        .value
+                                                        .fold((_) => 0, id));
                                               } else {
-                                                controller
-                                                    .text = centimetersToInches(
-                                                        double.tryParse(
-                                                                controller
-                                                                    .text) ??
-                                                            0)
-                                                    .formatDecimalValue;
+                                                convertedHeight =
+                                                    centimetersToInches(context
+                                                        .read<
+                                                            TrackerFormCubit>()
+                                                        .state
+                                                        .tracker
+                                                        .height
+                                                        .value
+                                                        .fold((_) => 0, id));
                                               }
+                                              controller.text = convertedHeight
+                                                  .formatDecimalValue;
                                               context
                                                   .read<TrackerFormCubit>()
-                                                  .trackerHeightChanged(controller.text);
+                                                  .trackerHeightChanged(
+                                                      convertedHeight
+                                                          .toString());
                                             },
                                             initialValue:
                                                 lastTracker.height.getOrCrash(),
@@ -335,5 +355,4 @@ class _ValueFormTextFieldState extends State<ValueFormTextField> {
       ),
     );
   }
-
 }
