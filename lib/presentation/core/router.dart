@@ -19,6 +19,7 @@ final goRouter = GoRouter(
     initialLocation: "/",
     routes: [
       ShellRoute(
+
           navigatorKey: _shellNavigatorKey,
           builder: (context, state, child) {
             return ScaffoldWithBottomNavBar(child: child);
@@ -90,7 +91,7 @@ void goToIntroPage(BuildContext context) => context.pushReplacement(
   PageRoutes.introPage,
 );
 
-void goToArticleOverviewPage(BuildContext context) => context.push(
+void goToArticleOverviewPage(BuildContext context) => context.go(
       PageRoutes.articleOverviewPage,
     );
 

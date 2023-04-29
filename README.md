@@ -6,9 +6,9 @@ The mobile application written in Flutter.
 
 <table>
   <tr>
+    <td><img src="./assets/github/intro.png" width="200"></td>
     <td><img src="./assets/github/article.png" width="200"></td>
     <td><img src="./assets/github/article_read.png" width="200"></td>
-    <td><img src="./assets/github/bookmarked.png" width="200"></td>
 
   </tr>
  <tr>
