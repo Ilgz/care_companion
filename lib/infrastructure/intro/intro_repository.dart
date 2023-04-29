@@ -12,7 +12,6 @@ class IntroFacade implements IIntroFacade {
 
   @override
   Future<bool> isFirstTime() async {
-    // Assuming you are storing a boolean value with the key 'is_first_time'
     final isFirstTime = _settingBox.get('is_first_time') ?? true;
     return isFirstTime;
   }
