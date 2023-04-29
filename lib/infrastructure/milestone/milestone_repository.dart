@@ -14,28 +14,29 @@ class MilestoneRepository implements IMilestoneRepository {
   @override
   Future<Either<MilestoneFailure, Unit>> changeMilestoneCompletionPhase(
       Milestone updateMilestone) async {
-    try {
-      final milestones = await getMilestones();
-      return milestones.fold((failure) {
-        return left(failure);
-      }, (milestones) async {
-        final index=milestones.indexWhere((milestone) => milestone.name==updateMilestone.name);
-        if (index != -1) {
-          if(_milestoneBox.isEmpty){
-          await  _milestoneBox.addAll(milestones);
+    final milestones = await getMilestones();
+    return milestones.fold((failure) {
+      return left(failure);
+    }, (milestones) async {
+      final index =
+      milestones.indexWhere((milestone) => milestone.name == updateMilestone.name);
+      if (index != -1) {
+        try {
+          if (_milestoneBox.isEmpty) {
+            await _milestoneBox.addAll(milestones);
           }
           _milestoneBox.putAt(index, updateMilestone);
           return right(unit);
-        } else {
-          // Milestone not found
-          throw HiveError("Milestone not found");
+        } on HiveError catch (e) {
+          return left(const MilestoneFailure.unexpected());
         }
-      });
-    } on HiveError catch (e) {
-      return left(const MilestoneFailure.unexpected());
-    }
-
+      } else {
+        // Milestone not found
+        return left(const MilestoneFailure.unexpected());
+      }
+    });
   }
+
 
   @override
   Future<Either<MilestoneFailure, List<Milestone>>> getMilestones() async {
@@ -143,7 +144,6 @@ class MilestoneRepository implements IMilestoneRepository {
         Milestone("Understands basic nouns and pronouns", 2, 6),
       ];
     }
-    ;
     return right(milestones);
   }
 }
