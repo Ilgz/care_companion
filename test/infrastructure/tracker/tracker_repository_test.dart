@@ -1,3 +1,4 @@
+import 'package:cash_manager/domain/milestone/value_objects.dart';
 import 'package:cash_manager/domain/tracker/tracker.dart';
 import 'package:cash_manager/domain/tracker/tracker_failure.dart';
 import 'package:cash_manager/domain/tracker/unit_preference.dart';
@@ -8,14 +9,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_test/hive_test.dart';
 
+import '../../fixtures/faker.dart';
+
 void main() {
   late Box<TrackerDto> trackerBox;
   late Box<UnitPreference> unitPreferenceBox;
   late TrackerRepository trackerRepository;
-
-  setUp(() async {
+  setUpAll(() async {
+    Hive.registerAdapter(TrackerDtoAdapter());
+    Hive.registerAdapter(HeightUnitAdapter());
+    Hive.registerAdapter(WeightUnitAdapter());
+    Hive.registerAdapter(UnitPreferenceAdapter());    await setUpTestHive();
     await setUpTestHive();
-    Hive.registerAdapter(UnitPreferenceAdapter());
+  });
+  setUp(() async {
     trackerBox = await Hive.openBox("tracker");
     unitPreferenceBox = await Hive.openBox("unitPreference");
     trackerRepository =
@@ -30,7 +37,7 @@ void main() {
   group('getTrackers', () {
     test('should return trackers when the box is not empty', () async {
       // arrange
-      final tracker = Tracker.empty();
+      final tracker = Tracker.empty().copyWith(weight: Measurement(getRandomDouble()),height: Measurement(getRandomDouble()));
       await trackerBox.put("test_tracker", TrackerDto.fromDomain(tracker));
 
       // act
@@ -45,14 +52,14 @@ void main() {
   group('createTracker', () {
     test('should add a tracker when it does not already exist', () async {
       // arrange
-      final tracker = Tracker.empty();
+      final tracker = Tracker.empty().copyWith(weight: Measurement(getRandomDouble()),height: Measurement(getRandomDouble()));
 
       // act
       final result = await trackerRepository.createTracker(tracker);
 
       // assert
       expect(result, isA<Right<TrackerFailure, Unit>>());
-      expect(trackerBox.values, [tracker]);
+      expect(trackerBox.values.toList(), [TrackerDto.fromDomain(tracker)]);
     });
   });
 
