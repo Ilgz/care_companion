@@ -15,7 +15,7 @@ import 'package:cash_manager/application/article/article_watcher/article_watcher
     as _i29;
 import 'package:cash_manager/application/article/fav_article_actor/fav_article_actor_cubit.dart'
     as _i26;
-import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart'
+import 'package:cash_manager/application/article/fav_article_watcher/fav_article_watcher_cubit.dart'
     as _i27;
 import 'package:cash_manager/application/intro/intro_cubit.dart' as _i17;
 import 'package:cash_manager/application/milestone/milestone_actor/milestone_actor_cubit.dart'
@@ -131,15 +131,15 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i25.ArticleSearcherCubit(gh<_i8.IArticleRepository>()));
     gh.singleton<_i26.FavArticleActorCubit>(
         _i26.FavArticleActorCubit(gh<_i8.IArticleRepository>()));
-    gh.singleton<_i27.FavArticleCubit>(
-        _i27.FavArticleCubit(gh<_i8.IArticleRepository>()));
+    gh.singleton<_i27.FavArticleWatcherCubit>(
+        _i27.FavArticleWatcherCubit(gh<_i8.IArticleRepository>()));
     gh.factory<_i28.TrackerWatcherCubit>(() => _i28.TrackerWatcherCubit(
           gh<_i15.ITrackerRepository>(),
           gh<_i24.UnitPreferenceWatcherCubit>(),
         ));
     gh.factory<_i29.ArticleWatcherCubit>(() => _i29.ArticleWatcherCubit(
           gh<_i8.IArticleRepository>(),
-          gh<_i27.FavArticleCubit>(),
+          gh<_i27.FavArticleWatcherCubit>(),
         ));
     return this;
   }

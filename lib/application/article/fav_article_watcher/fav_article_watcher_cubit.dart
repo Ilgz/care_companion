@@ -5,18 +5,18 @@ import 'package:cash_manager/domain/article/i_article_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'fav_article_state.dart';
-part 'fav_article_cubit.freezed.dart';
+part 'fav_article_watcher_state.dart';
+part 'fav_article_watcher_cubit.freezed.dart';
 @singleton
-class FavArticleCubit extends Cubit<FavArticleState> {
+class FavArticleWatcherCubit extends Cubit<FavArticleWatcherState> {
   final IArticleRepository _articleRepository;
-  FavArticleCubit(this._articleRepository) : super(const FavArticleState.initial());
+  FavArticleWatcherCubit(this._articleRepository) : super(const FavArticleWatcherState.initial());
 
   Future<void> getFavArticles() async {
-    emit(const FavArticleState.loadInProgress());
+    emit(const FavArticleWatcherState.loadInProgress());
     final articleIdListEither = await _articleRepository.getFavoriteArticles();
-    emit(articleIdListEither.fold((f) => FavArticleState.loadFailure(f),
-            (articles) => FavArticleState.loadSuccess(articles)));
+    emit(articleIdListEither.fold((f) => FavArticleWatcherState.loadFailure(f),
+            (articles) => FavArticleWatcherState.loadSuccess(articles)));
   }
 
 }

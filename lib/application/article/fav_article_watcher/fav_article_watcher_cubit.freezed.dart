@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'fav_article_cubit.dart';
+part of 'fav_article_watcher_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FavArticleState {
+mixin _$FavArticleWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,16 +69,17 @@ mixin _$FavArticleState {
 }
 
 /// @nodoc
-abstract class $FavArticleStateCopyWith<$Res> {
-  factory $FavArticleStateCopyWith(
-          FavArticleState value, $Res Function(FavArticleState) then) =
-      _$FavArticleStateCopyWithImpl<$Res, FavArticleState>;
+abstract class $FavArticleWatcherStateCopyWith<$Res> {
+  factory $FavArticleWatcherStateCopyWith(FavArticleWatcherState value,
+          $Res Function(FavArticleWatcherState) then) =
+      _$FavArticleWatcherStateCopyWithImpl<$Res, FavArticleWatcherState>;
 }
 
 /// @nodoc
-class _$FavArticleStateCopyWithImpl<$Res, $Val extends FavArticleState>
-    implements $FavArticleStateCopyWith<$Res> {
-  _$FavArticleStateCopyWithImpl(this._value, this._then);
+class _$FavArticleWatcherStateCopyWithImpl<$Res,
+        $Val extends FavArticleWatcherState>
+    implements $FavArticleWatcherStateCopyWith<$Res> {
+  _$FavArticleWatcherStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +96,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$FavArticleStateCopyWithImpl<$Res, _$_Initial>
+    extends _$FavArticleWatcherStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -108,7 +109,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'FavArticleState.initial()';
+    return 'FavArticleWatcherState.initial()';
   }
 
   @override
@@ -195,7 +196,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements FavArticleState {
+abstract class _Initial implements FavArticleWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -208,7 +209,7 @@ abstract class _$$_LoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$FavArticleStateCopyWithImpl<$Res, _$_LoadInProgress>
+    extends _$FavArticleWatcherStateCopyWithImpl<$Res, _$_LoadInProgress>
     implements _$$_LoadInProgressCopyWith<$Res> {
   __$$_LoadInProgressCopyWithImpl(
       _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
@@ -222,7 +223,7 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   String toString() {
-    return 'FavArticleState.loadInProgress()';
+    return 'FavArticleWatcherState.loadInProgress()';
   }
 
   @override
@@ -309,7 +310,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 }
 
-abstract class _LoadInProgress implements FavArticleState {
+abstract class _LoadInProgress implements FavArticleWatcherState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
@@ -324,7 +325,7 @@ abstract class _$$_LoadSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$FavArticleStateCopyWithImpl<$Res, _$_LoadSuccess>
+    extends _$FavArticleWatcherStateCopyWithImpl<$Res, _$_LoadSuccess>
     implements _$$_LoadSuccessCopyWith<$Res> {
   __$$_LoadSuccessCopyWithImpl(
       _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
@@ -360,7 +361,7 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   String toString() {
-    return 'FavArticleState.loadSuccess(articleIdList: $articleIdList)';
+    return 'FavArticleWatcherState.loadSuccess(articleIdList: $articleIdList)';
   }
 
   @override
@@ -457,7 +458,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements FavArticleState {
+abstract class _LoadSuccess implements FavArticleWatcherState {
   const factory _LoadSuccess(final List<String> articleIdList) = _$_LoadSuccess;
 
   List<String> get articleIdList;
@@ -479,7 +480,7 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$FavArticleStateCopyWithImpl<$Res, _$_LoadFailure>
+    extends _$FavArticleWatcherStateCopyWithImpl<$Res, _$_LoadFailure>
     implements _$$_LoadFailureCopyWith<$Res> {
   __$$_LoadFailureCopyWithImpl(
       _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
@@ -517,7 +518,7 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   String toString() {
-    return 'FavArticleState.loadFailure(articleFailure: $articleFailure)';
+    return 'FavArticleWatcherState.loadFailure(articleFailure: $articleFailure)';
   }
 
   @override
@@ -613,7 +614,7 @@ class _$_LoadFailure implements _LoadFailure {
   }
 }
 
-abstract class _LoadFailure implements FavArticleState {
+abstract class _LoadFailure implements FavArticleWatcherState {
   const factory _LoadFailure(final ArticleFailure articleFailure) =
       _$_LoadFailure;
 

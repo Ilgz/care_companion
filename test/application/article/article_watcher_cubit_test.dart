@@ -1,5 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
+import 'package:cash_manager/application/article/fav_article_watcher/fav_article_watcher_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/domain/article/article_failure.dart';
 import 'package:cash_manager/domain/article/i_article_repository.dart';
@@ -13,12 +13,12 @@ import '../../fixtures/faker.dart';
 
 class MockArticleRepository extends Mock implements IArticleRepository {}
 
-class MockFavArticleCubit extends Mock implements FavArticleCubit {}
+class MockFavArticleCubit extends Mock implements FavArticleWatcherCubit {}
 
 void main() {
   late ArticleWatcherCubit articleWatcherCubit;
   late IArticleRepository articleRepository;
-  late FavArticleCubit favArticleCubit;
+  late FavArticleWatcherCubit favArticleCubit;
 
   setUp(() {
     articleRepository = MockArticleRepository();
@@ -48,7 +48,7 @@ void main() {
           ),
         ];
         when(() => articleRepository.getArticles()).thenAnswer((_) async => Right(articles));
-        when(() => favArticleCubit.state).thenReturn(const FavArticleState.loadSuccess([]));
+        when(() => favArticleCubit.state).thenReturn(const FavArticleWatcherState.loadSuccess([]));
         return articleWatcherCubit;
       },
       act: (cubit) => cubit.getArticles(),
@@ -67,7 +67,7 @@ void main() {
       'emits [ArticleWatcherState.loadInProgress(), ArticleWatcherState.loadFailure()] when getArticles fails',
       build: () {
         when(() => articleRepository.getArticles()).thenAnswer((_) async => Left(ArticleFailure.unexpected()));
-        when(() => favArticleCubit.state).thenReturn(const FavArticleState.loadSuccess([]));
+        when(() => favArticleCubit.state).thenReturn(const FavArticleWatcherState.loadSuccess([]));
         return articleWatcherCubit;
       },
       act: (cubit) => cubit.getArticles(),

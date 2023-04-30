@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:cash_manager/application/article/fav_article_watcher/fav_article_cubit.dart';
+import 'package:cash_manager/application/article/fav_article_watcher/fav_article_watcher_cubit.dart';
 import 'package:cash_manager/domain/article/article.dart';
 import 'package:cash_manager/domain/article/article_failure.dart';
 import 'package:cash_manager/domain/article/i_article_repository.dart';
@@ -13,7 +13,7 @@ part 'article_watcher_state.dart';
 @injectable
 class ArticleWatcherCubit extends Cubit<ArticleWatcherState> {
   final IArticleRepository _articleRepository;
-  final FavArticleCubit favArticleCubit;
+  final FavArticleWatcherCubit favArticleCubit;
   List<String> favArticleIdList=[];
   ArticleWatcherCubit(this._articleRepository,this.favArticleCubit)
       : super(const ArticleWatcherState.initial());
